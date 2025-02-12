@@ -10,8 +10,9 @@ class Pengguna extends User
     protected $table = 'pengguna';
 
     protected $fillable = [
-        'name',
+        'username',
         'password',
+        'status'
     ];
 
     protected $hidden = [
