@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('nomor_rekening');
             $table->string('nomor_telepon');
             $table->string('email');
+            $table->text('alamat');
             $table->timestamps();
         });
     }
