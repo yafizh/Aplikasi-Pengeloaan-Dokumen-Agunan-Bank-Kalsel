@@ -45,7 +45,7 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item {{ active_class(['basic-ui/*']) }}">
+        {{-- <li class="nav-item {{ active_class(['basic-ui/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#basic-ui"
                 aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="basic-ui">
                 <i class="menu-icon mdi mdi-dna"></i>
@@ -65,7 +65,7 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
         <li
             class="nav-item {{ active_class(['lemari', 'lemari/create', 'lemari/edit', 'lemari/show', 'lemari-detail/create', 'lemari-detail/edit']) }}">
@@ -84,6 +84,12 @@
             <a class="nav-link" href="{{ url('/pegawai') }}">
                 <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Pegawai</span>
+            </a>
+        </li>
+        <li class="nav-item {{ active_class(['dokumen-agunan', 'dokumen-agunan/create', 'dokumen-agunan/edit']) }}">
+            <a class="nav-link" href="{{ url('/dokumen-agunan') }}">
+                <i class="menu-icon mdi mdi-chart-line"></i>
+                <span class="menu-title">Dokumen Agunan</span>
             </a>
         </li>
         <li class="nav-item {{ active_class(['user-pages/*']) }}">

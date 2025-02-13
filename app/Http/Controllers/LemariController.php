@@ -33,8 +33,8 @@ class LemariController extends Controller
 
     public function show(Lemari $lemari)
     {
-        $lemariDetail = $lemari->detail;
-        return view('pages.lemari.show', compact('lemari','lemariDetail'));
+        $lemariDetails = $lemari->details;
+        return view('pages.lemari.show', compact('lemari','lemariDetails'));
     }
 
     public function edit(Lemari $lemari)

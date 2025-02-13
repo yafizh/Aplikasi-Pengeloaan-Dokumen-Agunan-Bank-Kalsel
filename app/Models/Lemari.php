@@ -10,7 +10,7 @@ class Lemari extends Model
     protected $table = 'lemari';
     protected $guarded = [];
 
-    public function detail(): HasMany
+    public function details(): HasMany
     {
         return $this->hasMany(LemariDetail::class, 'lemari_id', 'id');
     }

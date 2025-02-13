@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="/css/app.css">
     <!-- end common css -->
 
+    <style>
+        .form-control {
+            padding: 0 1rem;
+        }
+    </style>
     @stack('style')
 </head>
 

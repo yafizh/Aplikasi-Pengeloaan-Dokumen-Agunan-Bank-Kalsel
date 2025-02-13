@@ -40,8 +40,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (count($lemariDetail))
-                                    @foreach ($lemariDetail as $item)
+                                @if (count($lemariDetails))
+                                    @foreach ($lemariDetails as $item)
                                         <tr>
                                             <td class="text-center">{{ $item->nomor }}</td>
                                             <td class="text-center">
