@@ -1,11 +1,5 @@
 <nav class="sidebar sidebar-offcanvas dynamic-active-class-disabled" id="sidebar">
     <ul class="nav">
-        <li class="nav-item {{ active_class(['/']) }}">
-            <a class="nav-link" href="{{ url('/') }}">
-                <i class="menu-icon mdi mdi-television"></i>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
         <li
             class="nav-item {{ active_class(['lemari', 'lemari/create', 'lemari/edit', 'lemari/show', 'lemari-detail/create', 'lemari-detail/edit']) }}">
             <a class="nav-link" href="{{ url('/lemari') }}">
