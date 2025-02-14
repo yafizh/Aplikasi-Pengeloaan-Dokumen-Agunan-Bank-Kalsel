@@ -32,6 +32,10 @@ class DokumenAgunanController extends Controller
             'pegawai_id' => 'required',
             'lemari_detail_id' => 'required',
             'nama' => 'required',
+            'jenis_agunan' => 'required',
+            'tanggal_akad' => 'required|date',
+            'berlaku_sampai' => 'required|date',
+            'status' => 'required',
             'keterangan' => 'required',
         ]);
 
@@ -43,6 +47,11 @@ class DokumenAgunanController extends Controller
 
     public function show(DokumenAgunan $dokumenAgunan)
     {
+        $tanggalAkad = $dokumenAgunan->tanggal_akad->locale('ID');
+        $dokumenAgunan->tanggal_akad_formatted = "{$tanggalAkad->getTranslatedDayName()}, {$tanggalAkad->day} {$tanggalAkad->getTranslatedMonthName()} {$tanggalAkad->year}";
+
+        $berlakuSampai = $dokumenAgunan->berlaku_sampai->locale('ID');
+        $dokumenAgunan->berlaku_sampai_formatted = "{$berlakuSampai->getTranslatedDayName()}, {$berlakuSampai->day} {$berlakuSampai->getTranslatedMonthName()} {$berlakuSampai->year}";
         return view('pages.dokumen-agunan.show', compact('dokumenAgunan'));
     }
 
@@ -61,6 +70,10 @@ class DokumenAgunanController extends Controller
             'pegawai_id' => 'required',
             'lemari_detail_id' => 'required',
             'nama' => 'required',
+            'jenis_agunan' => 'required',
+            'tanggal_akad' => 'required|date',
+            'berlaku_sampai' => 'required|date',
+            'status' => 'required',
             'keterangan' => 'required',
         ]);
 

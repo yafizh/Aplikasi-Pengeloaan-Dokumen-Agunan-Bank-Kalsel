@@ -27,6 +27,10 @@
                             <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
                         <div class="mb-3">
+                            <label for="jenis_agunan" class="form-label">Jenis Agunan</label>
+                            <input type="text" class="form-control" id="jenis_agunan" name="jenis_agunan" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="nasabah_id" class="form-label">Nasabah</label>
                             <select name="nasabah_id" id="nasabah_id" class="form-control" required>
                                 <option value="" selected disabled>Pilih Nasabah</option>
@@ -56,6 +60,23 @@
                                     </optgroup>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select name="status" id="status" class="form-control" required>
+                                <option value="" selected disabled>Pilih Status Dokumen</option>
+                                <option value="Terverifikasi">Terverifikasi</option>
+                                <option value="Menunggu Terverifikasi">Menunggu Terverifikasi</option>
+                                <option value="Belum Lengkap">Belum Lengkap</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tanggal_akad" class="form-label">Tanggal Akad</label>
+                            <input type="date" class="form-control" id="tanggal_akad" name="tanggal_akad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="berlaku_sampai" class="form-label">Berlaku Sampai</label>
+                            <input type="date" class="form-control" id="berlaku_sampai" name="berlaku_sampai" required>
                         </div>
                         <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan</label>
