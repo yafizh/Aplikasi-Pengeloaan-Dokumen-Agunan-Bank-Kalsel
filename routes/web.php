@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DokumenAgunanController;
 use App\Http\Controllers\DokumenAgunanPeminjamanController;
+use App\Http\Controllers\DokumenAgunanPengembalianController;
 use App\Http\Controllers\LemariController;
 use App\Http\Controllers\LemariDetailController;
 use App\Http\Controllers\NasabahController;
@@ -18,3 +19,4 @@ Route::resource('/lemari', LemariController::class);
 Route::resource('/lemari-detail', LemariDetailController::class);
 Route::resource('/dokumen-agunan', DokumenAgunanController::class);
 Route::resource('/dokumen-agunan-peminjaman', DokumenAgunanPeminjamanController::class);
+Route::resource('/dokumen-agunan-pengembalian', DokumenAgunanPengembalianController::class);
