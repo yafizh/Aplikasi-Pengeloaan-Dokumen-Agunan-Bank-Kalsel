@@ -1,7 +1,6 @@
 <nav class="sidebar sidebar-offcanvas dynamic-active-class-disabled" id="sidebar">
     <ul class="nav">
-        <li
-            class="nav-item {{ active_class(['lemari', 'lemari/create', 'lemari/edit', 'lemari/show', 'lemari-detail/create', 'lemari-detail/edit']) }}">
+        <li class="nav-item {{ active_class(['lemari/*', 'lemari-detail/*']) }}">
             <a class="nav-link" href="{{ url('/lemari') }}">
                 <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Lemari</span>
@@ -96,8 +95,8 @@
                     <li class="nav-item {{ active_class(['laporan/daftar-agunan']) }}">
                         <a class="nav-link text-wrap" href="{{ url('/laporan/daftar-agunan') }}">Daftar Agunan</a>
                     </li>
-                <li class="nav-item {{ active_class(['laporan/status-verifikasi']) }}">
-                    <a class="nav-link text-wrap" href="{{ url('/laporan/status-verifikasi') }}">
+                    <li class="nav-item {{ active_class(['laporan/status-verifikasi']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/status-verifikasi') }}">
                             Status Verifikasi Dokumen Agunan
                         </a>
                     </li>

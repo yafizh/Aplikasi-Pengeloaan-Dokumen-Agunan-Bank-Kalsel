@@ -24,6 +24,10 @@
     <!-- end common css -->
 
     <style>
+        textarea {
+            padding: 1rem!important;
+        }
+
         .form-control {
             padding: 0 1rem;
         }
