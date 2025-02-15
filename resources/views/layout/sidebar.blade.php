@@ -3,13 +3,13 @@
         <li
             class="nav-item {{ active_class(['lemari', 'lemari/create', 'lemari/edit', 'lemari/show', 'lemari-detail/create', 'lemari-detail/edit']) }}">
             <a class="nav-link" href="{{ url('/lemari') }}">
-                <i class="menu-icon mdi mdi-chart-line"></i>
+                <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Lemari</span>
             </a>
         </li>
         <li class="nav-item {{ active_class(['nasabah', 'nasabah/create', 'nasabah/edit']) }}">
             <a class="nav-link" href="{{ url('/nasabah') }}">
-                <i class="menu-icon mdi mdi-chart-line"></i>
+                <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Nasabah</span>
             </a>
         </li>
@@ -44,7 +44,7 @@
                     'dokumen-agunan-pengembalian/edit',
                 ]) }}"
                 aria-controls="basic-ui">
-                <i class="menu-icon mdi mdi-dna"></i>
+                <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Dokumen Agunan</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -84,38 +84,42 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item {{ active_class(['user-pages/*']) }}">
+        <li class="nav-item {{ active_class(['laporan/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#user-pages"
-                aria-expanded="{{ is_active_route(['user-pages/*']) }}" aria-controls="user-pages">
-                <i class="menu-icon mdi mdi-lock-outline"></i>
+                aria-expanded="{{ is_active_route(['laporan/*']) }}" aria-controls="user-pages">
+                <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Laporan</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ show_class(['user-pages/*']) }}" id="user-pages">
+            <div class="collapse {{ show_class(['laporan/*']) }}" id="user-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item {{ active_class(['user-pages/login']) }}">
-                        <a class="nav-link text-wrap" href="{{ url('/user-pages/login') }}">Laporan Daftar Agunan
-                            Berdasarkan Jenis Agunan</a>
+                    <li class="nav-item {{ active_class(['laporan/daftar-agunan']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/daftar-agunan') }}">Daftar Agunan</a>
                     </li>
-                    <li class="nav-item {{ active_class(['user-pages/register']) }}">
-                        <a class="nav-link text-wrap" href="{{ url('/user-pages/register') }}">Laporan Status
-                            Verifikasi Dokumen Agunan</a>
+                <li class="nav-item {{ active_class(['laporan/status-verifikasi']) }}">
+                    <a class="nav-link text-wrap" href="{{ url('/laporan/status-verifikasi') }}">
+                            Status Verifikasi Dokumen Agunan
+                        </a>
                     </li>
-                    <li class="nav-item {{ active_class(['user-pages/lock-screen']) }}">
-                        <a class="nav-link text-wrap" href="{{ url('/user-pages/lock-screen') }}">Laporan Masa Berlaku
-                            Dokumen Agunan</a>
+                    <li class="nav-item {{ active_class(['laporan/masa-berlaku']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/masa-berlaku') }}">
+                            Masa Berlaku Dokumen Agunan
+                        </a>
                     </li>
-                    <li class="nav-item {{ active_class(['user-pages/lock-screen']) }}">
-                        <a class="nav-link text-wrap" href="{{ url('/user-pages/lock-screen') }}">Laporan Peminjaman
-                            dan Pengembalian Dokumen Agunan</a>
+                    <li class="nav-item {{ active_class(['laporan/peminjaman-pengembalian']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/peminjaman-pengembalian') }}">
+                            Peminjaman dan Pengembalian Dokumen Agunan
+                        </a>
                     </li>
-                    <li class="nav-item {{ active_class(['user-pages/lock-screen']) }}">
-                        <a class="nav-link text-wrap" href="{{ url('/user-pages/lock-screen') }}">Lapora Letak
-                            Agunan</a>
+                    <li class="nav-item {{ active_class(['laporan/letak-dokumen-agunan']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/letak-dokumen-agunan') }}">
+                            Letak Dokumen Agunan
+                        </a>
                     </li>
-                    <li class="nav-item {{ active_class(['user-pages/lock-screen']) }}">
-                        <a class="nav-link text-wrap" href="{{ url('/user-pages/lock-screen') }}">Laporan
-                            Ketersediaan Ruang Penyimpanan Dokumen Agunan</a>
+                    <li class="nav-item {{ active_class(['laporan/ketersediaan-ruang-penyimpanan']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/ketersediaan-ruang-penyimpanan') }}">
+                            Ketersediaan Ruang Penyimpanan Dokumen Agunan
+                        </a>
                     </li>
                 </ul>
             </div>
