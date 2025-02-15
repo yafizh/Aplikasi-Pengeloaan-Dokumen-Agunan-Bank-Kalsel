@@ -5,7 +5,11 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 card-title>Laporan Ketersediaan Ruang Penyimpanan Dokumen Agunan</h4>
+                    <div class="card-title d-flex justify-content-between">
+                        <h4>Laporan Ketersediaan Ruang Penyimpanan Dokumen Agunan</h4>
+                        <a href="{{ url('/cetak/ketersediaan-ruang-penyimpanan') }}" class="btn btn-primary"
+                            target="_blank">Cetak</a>
+                    </div>
                     <div class="table-responsive">
                         <table id="example" class="table">
                             <thead>

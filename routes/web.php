@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\DokumenAgunanController;
 use App\Http\Controllers\DokumenAgunanPeminjamanController;
 use App\Http\Controllers\DokumenAgunanPengembalianController;
@@ -23,6 +24,16 @@ Route::resource('/dokumen-agunan-peminjaman', DokumenAgunanPeminjamanController:
 Route::resource('/dokumen-agunan-pengembalian', DokumenAgunanPengembalianController::class);
 Route::controller(ReportController::class)
     ->prefix('laporan')
+    ->group(function () {
+        Route::get('/daftar-agunan', 'daftarAgunan');
+        Route::get('/status-verifikasi', 'statusVerifikasi');
+        Route::get('/masa-berlaku', 'masaBerlaku');
+        Route::get('/peminjaman-pengembalian', 'peminjamanPengembalian');
+        Route::get('/letak-dokumen-agunan', 'letakDokumenAgunan');
+        Route::get('/ketersediaan-ruang-penyimpanan', 'ketersediaanRuangPenyimpanan');
+    });
+Route::controller(CetakController::class)
+    ->prefix('cetak')
     ->group(function () {
         Route::get('/daftar-agunan', 'daftarAgunan');
         Route::get('/status-verifikasi', 'statusVerifikasi');
