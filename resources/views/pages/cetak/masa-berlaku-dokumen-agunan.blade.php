@@ -20,7 +20,7 @@
                 <th class="text-center">Nama Dokumen</th>
                 <th class="text-center">Nama Nasabah</th>
                 <th class="text-center">Nomor Rekening</th>
-                <th class="text-center">Masa Berlaku</th>
+                <th class="text-center">Berlaku Sampai</th>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@
                         <td class="align-middle">{{ $item->nama }}</td>
                         <td class="align-middle">{{ $item->nasabah->nama }}</td>
                         <td class="align-middle text-center">{{ $item->nasabah->nomor_rekening }}</td>
-                        <td class="align-middle text-center">{{ $item->masa_berlaku }}</td>
+                        <td class="align-middle text-center">{{ $item->berlaku_sampai_formatted }}</td>
                     </tr>
                 @endforeach
             @endif

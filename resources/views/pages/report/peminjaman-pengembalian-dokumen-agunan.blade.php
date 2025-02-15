@@ -25,9 +25,9 @@
                                         <tr>
                                             <td>{{ $item->dokumenAgunan->nama }}</td>
                                             <td>{{ $item->pegawai->nama }}</td>
-                                            <td class="text-center">{{ $item->tanggal_peminjaman }}</td>
+                                            <td class="text-center">{{ $item->tanggal_peminjaman_formatted }}</td>
                                             <td class="text-center">
-                                                {{ $item->pengembalian->tanggal_pengembalian ?? 'Belum Dikembalikan' }}
+                                                {{ $item->tanggal_pengembalian_formatted ?? 'Belum Dikembalikan' }}
                                             </td>
                                         </tr>
                                     @endforeach

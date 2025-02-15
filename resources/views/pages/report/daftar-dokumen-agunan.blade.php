@@ -27,7 +27,7 @@
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->nasabah->nama }}</td>
                                             <td class="text-center">{{ $item->nasabah->nomor_rekening }}</td>
-                                            <td class="text-center">{{ $item->tanggal_akad }}</td>
+                                            <td class="text-center">{{ $item->tanggal_akad_formatted }}</td>
                                             <td>{{ $item->jenis_agunan }}</td>
                                         </tr>
                                     @endforeach
