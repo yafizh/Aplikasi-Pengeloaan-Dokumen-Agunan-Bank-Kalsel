@@ -27,7 +27,7 @@
                     <div class="mb-3">
                         <label class="form-label">Lokasi Penyimpanan</label>
                         <input type="text" class="form-control" required
-                            value="{{ $dokumenAgunan->lemariDetail->lemari->nama . '->' . $dokumenAgunan->lemariDetail->nomor }}"
+                            value="{{ $dokumenAgunan->lemariDetail->lemari->nama . ' -> ' . $dokumenAgunan->lemariDetail->nomor }}"
                             disabled>
                     </div>
                     <div class="mb-3">

@@ -26,9 +26,11 @@
                         @method('PUT')
                         <div class="mb-3">
                             <label for="dokumen_agunan_peminjaman_id" class="form-label">Dokumen Yang Dipinjam</label>
-                            <select name="dokumen_agunan_peminjaman_id" id="dokumen_agunan_peminjaman_id" class="form-control" required>
+                            <select name="dokumen_agunan_peminjaman_id" id="dokumen_agunan_peminjaman_id"
+                                class="form-control" required>
                                 @foreach ($dokumenAgunanPeminjaman as $item)
-                                    <option {{ $item->id == $dokumenAgunanPengembalian->dokumen_peminjaman_id ? 'selected' : '' }}
+                                    <option
+                                        {{ $item->id == $dokumenAgunanPengembalian->dokumen_peminjaman_id ? 'selected' : '' }}
                                         value="{{ $item->id }}">
                                         {{ $item->dokumenAgunan->nama }}
                                     </option>
@@ -38,7 +40,7 @@
                         <div class="mb-3">
                             <label for="tanggal_pengembalian" class="form-label">Tanggal Pengembalian</label>
                             <input type="date" name="tanggal_pengembalian" id="tanggal_pengembalian" class="form-control"
-                                required value="{{ $dokumenAgunanPengembalian->tanggal_pengembalian }}">
+                                required value="{{ $dokumenAgunanPengembalian->tanggal_pengembalian->format('Y-m-d') }}">
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-success">Simpan</button>

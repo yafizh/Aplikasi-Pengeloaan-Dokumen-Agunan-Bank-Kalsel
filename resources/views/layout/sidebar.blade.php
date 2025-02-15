@@ -1,18 +1,18 @@
 <nav class="sidebar sidebar-offcanvas dynamic-active-class-disabled" id="sidebar">
     <ul class="nav">
-        <li class="nav-item {{ active_class(['lemari/*', 'lemari-detail/*']) }}">
+        <li class="nav-item {{ active_class(['lemari', 'lemari/*', 'lemari-detail/*']) }}">
             <a class="nav-link" href="{{ url('/lemari') }}">
                 <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Lemari</span>
             </a>
         </li>
-        <li class="nav-item {{ active_class(['nasabah', 'nasabah/create', 'nasabah/edit']) }}">
+        <li class="nav-item {{ active_class(['nasabah', 'nasabah/*']) }}">
             <a class="nav-link" href="{{ url('/nasabah') }}">
                 <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Nasabah</span>
             </a>
         </li>
-        <li class="nav-item {{ active_class(['pegawai', 'pegawai/create', 'pegawai/edit']) }}">
+        <li class="nav-item {{ active_class(['pegawai', 'pegawai/*']) }}">
             <a class="nav-link" href="{{ url('/pegawai') }}">
                 <i class="menu-icon mdi mdi-table-large"></i>
                 <span class="menu-title">Pegawai</span>
@@ -21,26 +21,20 @@
         <li
             class="nav-item {{ active_class([
                 'dokumen-agunan',
-                'dokumen-agunan/create',
-                'dokumen-agunan/edit',
+                'dokumen-agunan/*',
                 'dokumen-agunan-peminjaman',
-                'dokumen-agunan-peminjaman/create',
-                'dokumen-agunan-peminjaman/edit',
+                'dokumen-agunan-peminjaman/*',
                 'dokumen-agunan-pengembalian',
-                'dokumen-agunan-pengembalian/create',
-                'dokumen-agunan-pengembalian/edit',
+                'dokumen-agunan-pengembalian/*',
             ]) }}">
             <a class="nav-link" data-toggle="collapse" href="#basic-ui"
                 aria-expanded="{{ is_active_route([
                     'dokumen-agunan',
-                    'dokumen-agunan/create',
-                    'dokumen-agunan/edit',
+                    'dokumen-agunan/*',
                     'dokumen-agunan-peminjaman',
-                    'dokumen-agunan-peminjaman/create',
-                    'dokumen-agunan-peminjaman/edit',
+                    'dokumen-agunan-peminjaman/*',
                     'dokumen-agunan-pengembalian',
-                    'dokumen-agunan-pengembalian/create',
-                    'dokumen-agunan-pengembalian/edit',
+                    'dokumen-agunan-pengembalian/*',
                 ]) }}"
                 aria-controls="basic-ui">
                 <i class="menu-icon mdi mdi-table-large"></i>
@@ -49,35 +43,23 @@
             </a>
             <div class="collapse {{ show_class([
                 'dokumen-agunan',
-                'dokumen-agunan/create',
-                'dokumen-agunan/edit',
+                'dokumen-agunan/*',
                 'dokumen-agunan-peminjaman',
-                'dokumen-agunan-peminjaman/create',
-                'dokumen-agunan-peminjaman/edit',
+                'dokumen-agunan-peminjaman/*',
                 'dokumen-agunan-pengembalian',
-                'dokumen-agunan-pengembalian/create',
-                'dokumen-agunan-pengembalian/edit',
+                'dokumen-agunan-pengembalian/*',
             ]) }}"
                 id="basic-ui">
                 <ul class="nav flex-column sub-menu">
-                    <li
-                        class="nav-item {{ active_class(['dokumen-agunan', 'dokumen-agunan/create', 'dokumen-agunan/edit']) }}">
+                    <li class="nav-item {{ active_class(['dokumen-agunan', 'dokumen-agunan/*']) }}">
                         <a class="nav-link" href="{{ url('/dokumen-agunan') }}">Dokumen Agunan</a>
                     </li>
                     <li
-                        class="nav-item {{ active_class([
-                            'dokumen-agunan-peminjaman',
-                            'dokumen-agunan-peminjaman/create',
-                            'dokumen-agunan-peminjaman/edit',
-                        ]) }}">
+                        class="nav-item {{ active_class(['dokumen-agunan-peminjaman', 'dokumen-agunan-peminjaman/*']) }}">
                         <a class="nav-link" href="{{ url('/dokumen-agunan-peminjaman') }}">Peminjaman</a>
                     </li>
                     <li
-                        class="nav-item {{ active_class([
-                            'dokumen-agunan-pengembalian',
-                            'dokumen-agunan-pengembalian/create',
-                            'dokumen-agunan-pengembalian/edit',
-                        ]) }}">
+                        class="nav-item {{ active_class(['dokumen-agunan-pengembalian', 'dokumen-agunan-pengembalian/*']) }}">
                         <a class="nav-link" href="{{ url('/dokumen-agunan-pengembalian') }}">Pengembalian</a>
                     </li>
                 </ul>

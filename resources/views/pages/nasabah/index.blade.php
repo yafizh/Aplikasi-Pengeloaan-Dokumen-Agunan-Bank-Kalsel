@@ -32,6 +32,8 @@
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->nomor_rekening }}</td>
                                             <td class="d-flex" style="gap: .6rem;">
+                                                <a href="{{ route('nasabah.show', $item->id) }}"
+                                                    class="btn btn-info">Lihat</a>
                                                 <a href="{{ route('nasabah.edit', $item->id) }}"
                                                     class="btn btn-warning">Edit</a>
                                                 <form action="{{ route('nasabah.destroy', $item->id) }}" method="POST">

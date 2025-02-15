@@ -23,6 +23,7 @@
                                     <th class="text-center">Nama Dokumen</th>
                                     <th class="text-center">Pegawai Peminjam</th>
                                     <th class="text-center">Tanggal Pinjam</th>
+                                    <th class="text-center">Keperluan</th>
                                     <th class="text-center" style="width: 1%;white-space: nowrap;">Aksi</th>
                                 </tr>
                             </thead>
@@ -32,7 +33,8 @@
                                         <tr>
                                             <td>{{ $item->dokumenAgunan->nama }}</td>
                                             <td>{{ $item->pegawai->nama }}</td>
-                                            <td>{{ $item->tanggal_peminjaman }}</td>
+                                            <td class="text-center">{{ $item->tanggal_peminjaman_formatted }}</td>
+                                            <td>{{ $item->keperluan }}</td>
                                             <td class="d-flex" style="gap: .6rem;">
                                                 <a href="{{ route('dokumen-agunan-peminjaman.edit', $item->id) }}"
                                                     class="btn btn-warning">Edit</a>

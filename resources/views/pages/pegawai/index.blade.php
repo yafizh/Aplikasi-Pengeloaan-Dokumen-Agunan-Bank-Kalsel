@@ -32,6 +32,8 @@
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->nomor_telepon }}</td>
                                             <td class="d-flex" style="gap: .6rem;">
+                                                <a href="{{ route('pegawai.show', $item->id) }}"
+                                                    class="btn btn-info">Lihat</a>
                                                 <a href="{{ route('pegawai.edit', $item->id) }}"
                                                     class="btn btn-warning">Edit</a>
                                                 <form action="{{ route('pegawai.destroy', $item->id) }}" method="POST">

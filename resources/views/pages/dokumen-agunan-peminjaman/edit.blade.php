@@ -48,7 +48,7 @@
                         <div class="mb-3">
                             <label for="tanggal_peminjaman" class="form-label">Tanggal Peminjaman</label>
                             <input type="date" name="tanggal_peminjaman" id="tanggal_peminjaman" class="form-control"
-                                required value="{{ $dokumenAgunanPeminjaman->tanggal_peminjaman }}">
+                                required value="{{ $dokumenAgunanPeminjaman->tanggal_peminjaman->format('Y-m-d') }}">
                         </div>
                         <div class="mb-3">
                             <label for="keperluan" class="form-label">Keperluan</label>

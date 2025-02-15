@@ -9,6 +9,9 @@ class DokumenAgunanPengembalian extends Model
 {
     protected $table = 'dokumen_agunan_pengembalaian';
     protected $guarded = [];
+    protected $casts = [
+        'tanggal_pengembalian' => 'date'
+    ];
 
     public function peminjaman(): BelongsTo
     {

@@ -11,7 +11,14 @@ class DokumenAgunanPeminjamanController extends Controller
 {
     public function index()
     {
-        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with(['pegawai','dokumenAgunan'])->get();
+        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with(['pegawai', 'dokumenAgunan'])
+            ->get()
+            ->map(function ($item) {
+                $tanggalPeminjaman = $item->tanggal_peminjaman->locale('ID');
+                $item->tanggal_peminjaman_formatted = "{$tanggalPeminjaman->getTranslatedDayName()}, {$tanggalPeminjaman->day} {$tanggalPeminjaman->getTranslatedMonthName()} {$tanggalPeminjaman->year}";
+
+                return $item;
+            });
         return view('pages.dokumen-agunan-peminjaman.index', compact('dokumenAgunanPeminjaman'));
     }
 

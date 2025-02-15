@@ -10,7 +10,18 @@ class DokumenAgunanPengembalianController extends Controller
 {
     public function index()
     {
-        $dokumenAgunanPengembalian = DokumenAgunanPengembalian::with(['peminjaman.dokumenAgunan', 'peminjaman.pegawai'])->get();
+        $dokumenAgunanPengembalian = DokumenAgunanPengembalian::with(['peminjaman.dokumenAgunan', 'peminjaman.pegawai'])
+            ->get()
+            ->map(function ($item) {
+                $tanggalPeminjaman = $item->peminjaman->tanggal_peminjaman->locale('ID');
+                $item->tanggal_peminjaman_formatted = "{$tanggalPeminjaman->getTranslatedDayName()}, {$tanggalPeminjaman->day} {$tanggalPeminjaman->getTranslatedMonthName()} {$tanggalPeminjaman->year}";
+
+                $tanggalPengembalian = $item->tanggal_pengembalian->locale('ID');
+                $item->tanggal_pengembalian_formatted = "{$tanggalPengembalian->getTranslatedDayName()}, {$tanggalPengembalian->day} {$tanggalPengembalian->getTranslatedMonthName()} {$tanggalPengembalian->year}";
+
+                return $item;
+            });
+
         return view('pages.dokumen-agunan-pengembalian.index', compact('dokumenAgunanPengembalian'));
     }
 

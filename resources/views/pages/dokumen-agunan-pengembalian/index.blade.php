@@ -33,8 +33,8 @@
                                         <tr>
                                             <td>{{ $item->peminjaman->dokumenAgunan->nama }}</td>
                                             <td>{{ $item->peminjaman->pegawai->nama }}</td>
-                                            <td>{{ $item->peminjaman->tanggal_peminjaman }}</td>
-                                            <td>{{ $item->tanggal_pengembalian }}</td>
+                                            <td class="text-center">{{ $item->tanggal_peminjaman_formatted }}</td>
+                                            <td class="text-center">{{ $item->tanggal_pengembalian_formatted }}</td>
                                             <td class="d-flex" style="gap: .6rem;">
                                                 <a href="{{ route('dokumen-agunan-pengembalian.edit', $item->id) }}"
                                                     class="btn btn-warning">Edit</a>
