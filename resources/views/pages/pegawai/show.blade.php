@@ -15,6 +15,16 @@
                             value="{{ $pegawai->nama }}" disabled>
                     </div>
                     <div class="mb-3">
+                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                        <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required
+                            value="{{ $pegawai->tanggal_lahir_formatted }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" required
+                            value="{{ $pegawai->jenis_kelamin }}" disabled>
+                    </div>
+                    <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email" name="email"
                             value="{{ $pegawai->email }}" disabled>

@@ -15,6 +15,16 @@
                             value="{{ $nasabah->nama }}" disabled>
                     </div>
                     <div class="mb-3">
+                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                        <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required
+                            value="{{ $nasabah->tanggal_lahir_formatted }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" required
+                            value="{{ $nasabah->jenis_kelamin }}" disabled>
+                    </div>
+                    <div class="mb-3">
                         <label for="nomor_rekening" class="form-label">Nomor Rekening</label>
                         <input type="text" class="form-control" id="nomor_rekening" name="nomor_rekening" required
                             value="{{ $nasabah->nomor_rekening }}" disabled>

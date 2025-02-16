@@ -8,4 +8,7 @@ class Nasabah extends Model
 {
     protected $table = 'nasabah';
     protected $guarded = [];
+    protected $casts = [
+        'tanggal_lahir' => 'date'
+    ];
 }

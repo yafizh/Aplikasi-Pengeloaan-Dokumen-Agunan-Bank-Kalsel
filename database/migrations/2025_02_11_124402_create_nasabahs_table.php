@@ -12,6 +12,8 @@ return new class extends Migration
         Schema::create((new Nasabah)->getTable(), function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('jenis_kelamin');
+            $table->date('tanggal_lahir');
             $table->string('nomor_rekening');
             $table->string('nomor_telepon');
             $table->string('email');

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('pegawai_id');
             $table->foreignId('lemari_detail_id');
             $table->string('nama');
+            $table->string('cif');
             $table->date('tanggal_akad');
             $table->date('berlaku_sampai');
             $table->string('jenis_agunan');

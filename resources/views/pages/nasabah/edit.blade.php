@@ -34,6 +34,30 @@
                                 value="{{ $nasabah->nomor_rekening }}">
                         </div>
                         <div class="mb-3">
+                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required
+                                value="{{ $nasabah->tanggal_lahir->format('Y-m-d') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Jenis Kelamin</label>
+                            <div class="d-flex" style="gap: 1rem;">
+                                <div>
+                                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin1" value="Laki - Laki"
+                                        required {{ $nasabah->jenis_kelamin == 'Laki - Laki' ? 'checked' : '' }}>
+                                    <label for="jenis_kelamin1">
+                                        Laki - Laki
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin2" value="Perempuan"
+                                        required {{ $nasabah->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
+                                    <label for="jenis_kelamin2">
+                                        Perempuan
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="email" name="email"
                                 value="{{ $nasabah->email }}">

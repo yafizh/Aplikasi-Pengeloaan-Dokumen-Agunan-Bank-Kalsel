@@ -25,7 +25,9 @@ class NasabahController extends Controller
             'email' => 'required|email',
             'alamat' => 'required',
             'nomor_telepon' => 'required',
-            'nomor_rekening' => 'required'
+            'nomor_rekening' => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required',
         ]);
 
         Nasabah::create($data);
@@ -35,6 +37,9 @@ class NasabahController extends Controller
 
     public function show(Nasabah $nasabah)
     {
+        $tanggalLahir = $nasabah->tanggal_lahir->locale('ID');
+        $nasabah->tanggal_lahir_formatted = "{$tanggalLahir->getTranslatedDayName()}, {$tanggalLahir->day} {$tanggalLahir->getTranslatedMonthName()} {$tanggalLahir->year}";
+
         return view('pages.nasabah.show', compact('nasabah'));
     }
 
@@ -50,7 +55,9 @@ class NasabahController extends Controller
             'email' => 'required|email',
             'alamat' => 'required',
             'nomor_telepon' => 'required',
-            'nomor_rekening' => 'required'
+            'nomor_rekening' => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required',
         ]);
 
         $nasabah->update($data);

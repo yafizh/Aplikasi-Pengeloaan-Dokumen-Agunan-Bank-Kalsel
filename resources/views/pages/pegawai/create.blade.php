@@ -27,6 +27,29 @@
                             <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
                         <div class="mb-3">
+                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Jenis Kelamin</label>
+                            <div class="d-flex" style="gap: 1rem;">
+                                <div>
+                                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin1" value="Laki - Laki"
+                                        required>
+                                    <label for="jenis_kelamin1">
+                                        Laki - Laki
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="jenis_kelamin" id="jenis_kelamin2" value="Perempuan"
+                                        required>
+                                    <label for="jenis_kelamin2">
+                                        Perempuan
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="email" name="email">
                         </div>

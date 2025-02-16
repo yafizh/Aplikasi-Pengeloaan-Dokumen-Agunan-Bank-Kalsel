@@ -26,6 +26,8 @@ class PegawaiController extends Controller
             'email' => 'required|email',
             'alamat' => 'required',
             'nomor_telepon' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required'
         ]);
 
         $pengguna = Pengguna::create([
@@ -42,6 +44,9 @@ class PegawaiController extends Controller
 
     public function show(Pegawai $pegawai)
     {
+        $tanggalLahir = $pegawai->tanggal_lahir->locale('ID');
+        $pegawai->tanggal_lahir_formatted = "{$tanggalLahir->getTranslatedDayName()}, {$tanggalLahir->day} {$tanggalLahir->getTranslatedMonthName()} {$tanggalLahir->year}";
+
         return view('pages.pegawai.show', compact('pegawai'));
     }
 
@@ -57,6 +62,8 @@ class PegawaiController extends Controller
             'email' => 'required|email',
             'alamat' => 'required',
             'nomor_telepon' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required'
         ]);
 
         $pegawai->pengguna->update(['username' => $data['email']]);

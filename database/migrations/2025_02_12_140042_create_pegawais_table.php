@@ -13,6 +13,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pengguna_id');
             $table->string('nama');
+            $table->string('jenis_kelamin');
+            $table->date('tanggal_lahir');
             $table->string('nomor_telepon');
             $table->string('email');
             $table->text('alamat');
