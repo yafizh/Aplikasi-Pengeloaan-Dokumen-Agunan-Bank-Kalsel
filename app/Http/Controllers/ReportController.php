@@ -42,8 +42,10 @@ class ReportController extends Controller
                 $tanggalPeminjaman = $item->tanggal_peminjaman->locale('ID');
                 $item->tanggal_peminjaman_formatted = "{$tanggalPeminjaman->getTranslatedDayName()}, {$tanggalPeminjaman->day} {$tanggalPeminjaman->getTranslatedMonthName()} {$tanggalPeminjaman->year}";
 
-                $tanggalPengembalian = $item->pengembalian->tanggal_pengembalian->locale('ID');
-                $item->tanggal_pengembalian_formatted = "{$tanggalPengembalian->getTranslatedDayName()}, {$tanggalPengembalian->day} {$tanggalPengembalian->getTranslatedMonthName()} {$tanggalPengembalian->year}";
+                if ($item->pengembalian) {
+                    $tanggalPengembalian = $item->pengembalian->tanggal_pengembalian->locale('ID');
+                    $item->tanggal_pengembalian_formatted = "{$tanggalPengembalian->getTranslatedDayName()}, {$tanggalPengembalian->day} {$tanggalPengembalian->getTranslatedMonthName()} {$tanggalPengembalian->year}";
+                } else $item->tanggal_pengembalian_formatted = '-';
 
                 return $item;
             });
