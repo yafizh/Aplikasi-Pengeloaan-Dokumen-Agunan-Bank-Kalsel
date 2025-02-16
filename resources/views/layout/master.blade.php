@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Star Admin Pro Laravel Dashboard Template</title>
+    <title>Aplikasi Pengelolaan Dokumen Agunan</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,7 @@
 
     <style>
         textarea {
-            padding: 1rem!important;
+            padding: 1rem !important;
         }
 
         .form-control {
