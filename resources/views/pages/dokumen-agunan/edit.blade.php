@@ -24,6 +24,11 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
+                            <label for="cif" class="form-label">Cif</label>
+                            <input type="text" class="form-control" id="cif" name="cif" required
+                                value="{{ $dokumenAgunan->nama }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama" required
                                 value="{{ $dokumenAgunan->nama }}">

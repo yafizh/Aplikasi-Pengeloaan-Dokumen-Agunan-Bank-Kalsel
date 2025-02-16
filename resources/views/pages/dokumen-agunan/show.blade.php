@@ -10,6 +10,11 @@
                         <a href="{{ route('dokumen-agunan.index') }}" class="btn btn-secondary">Kembali</a>
                     </div>
                     <div class="mb-3">
+                        <label for="cif" class="form-label">Cif</label>
+                        <input type="text" class="form-control" id="cif" name="cif" required
+                            value="{{ $dokumenAgunan->cif }}" disabled>
+                    </div>
+                    <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" required
                             value="{{ $dokumenAgunan->nama }}" disabled>
@@ -27,7 +32,7 @@
                     <div class="mb-3">
                         <label class="form-label">Lokasi Penyimpanan</label>
                         <input type="text" class="form-control" required
-                            value="{{ $dokumenAgunan->lemariDetail->lemari->nama . ' -> ' . $dokumenAgunan->lemariDetail->nomor }}"
+                            value="{{ $dokumenAgunan->lemariDetail->lemari->nama . '->' . $dokumenAgunan->lemariDetail->nomor }}"
                             disabled>
                     </div>
                     <div class="mb-3">
@@ -36,13 +41,13 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tanggal Akad</label>
-                        <input type="text" class="form-control" required value="{{ $dokumenAgunan->tanggal_akad_formatted }}"
-                            disabled>
+                        <input type="text" class="form-control" required
+                            value="{{ $dokumenAgunan->tanggal_akad_formatted }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Berlaku Sampai</label>
-                        <input type="text" class="form-control" required value="{{ $dokumenAgunan->berlaku_sampai_formatted }}"
-                            disabled>
+                        <input type="text" class="form-control" required
+                            value="{{ $dokumenAgunan->berlaku_sampai_formatted }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>

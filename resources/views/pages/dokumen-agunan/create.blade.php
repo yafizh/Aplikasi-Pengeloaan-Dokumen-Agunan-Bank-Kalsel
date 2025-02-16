@@ -23,6 +23,10 @@
                     <form action="{{ route('dokumen-agunan.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
+                            <label for="cif" class="form-label">Cif</label>
+                            <input type="text" class="form-control" id="cif" name="cif" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="nama" class="form-label">Nama Dokumen</label>
                             <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
