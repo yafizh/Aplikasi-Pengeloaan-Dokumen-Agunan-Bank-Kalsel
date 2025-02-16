@@ -12,7 +12,7 @@
 <body>
     @include('pages.cetak.header')
     <hr>
-    <h3 class="text-center">Laporan Daftar Dokumen Bangunan</h3>
+    <h3 class="text-center">Laporan Daftar Dokumen Agunan</h3>
     <br>
     <table class="table table-bordered">
         <thead>
