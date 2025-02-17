@@ -17,15 +17,17 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th class="text-center">No</th>
                 <th class="text-center">Lemari</th>
                 <th class="text-center">Status</th>
             </tr>
         </thead>
         <tbody>
             @if (count($lemari))
-                @foreach ($lemari as $item)
-                    @foreach ($item->details as $detail)
+                @foreach ($lemari as $i => $item)
+                    @foreach ($item->details as $j => $detail)
                         <tr>
+                            <td class="align-middle text-center">{{ $i + $j + 1 }}</td>
                             <td class="align-middle text-center">{{ $item->nama }} -> {{ $detail->nomor }}</td>
                             <td class="align-middle text-center">{{ $detail->status }}</td>
                         </tr>

@@ -40,6 +40,7 @@
                         <table id="example" class="table">
                             <thead>
                                 <tr>
+                                    <th class="text-center">No</th>
                                     <th class="text-center">Dokumen Nasabah Yang Dipinjam</th>
                                     <th class="text-center">Pegawai yang Meminjam</th>
                                     <th class="text-center">Tanggal Peminjaman</th>
@@ -48,8 +49,9 @@
                             </thead>
                             <tbody>
                                 @if (count($dokumenAgunanPeminjaman))
-                                    @foreach ($dokumenAgunanPeminjaman as $item)
+                                    @foreach ($dokumenAgunanPeminjaman as $i => $item)
                                         <tr>
+                                            <td class="text-center">{{ $i + 1 }}</td>
                                             <td>{{ $item->dokumenAgunan->nasabah_nama }}</td>
                                             <td>{{ $item->pegawai->nama }}</td>
                                             <td class="text-center">{{ $item->tanggal_peminjaman_formatted }}</td>

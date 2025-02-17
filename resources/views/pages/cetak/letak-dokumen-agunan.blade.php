@@ -17,6 +17,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th class="text-center">No</th>
                 <th class="text-center">Cif</th>
                 <th class="text-center">Jenis Kredit</th>
                 <th class="text-center">Jenis Agunan</th>
@@ -25,8 +26,9 @@
         </thead>
         <tbody>
             @if (count($dokumenAgunan))
-                @foreach ($dokumenAgunan as $item)
+                @foreach ($dokumenAgunan as $i => $item)
                     <tr>
+                        <td class="align-middle text-center">{{ $i + 1 }}</td>
                         <td class="align-middle text-center">{{ $item->cif }}</td>
                         <td class="align-middle text-center">{{ $item->jenis_agunan }}</td>
                         <td class="align-middle text-center">{{ $item->jenis_kredit }}</td>

@@ -38,6 +38,7 @@
                         <table id="example" class="table">
                             <thead>
                                 <tr>
+                                    <th class="text-center">No</th>
                                     <th class="text-center">Cif</th>
                                     <th class="text-center">Nama Nasabah</th>
                                     <th class="text-center">Nomor Rekening</th>
@@ -48,8 +49,9 @@
                             </thead>
                             <tbody>
                                 @if (count($dokumenAgunan))
-                                    @foreach ($dokumenAgunan as $item)
+                                    @foreach ($dokumenAgunan as $i => $item)
                                         <tr>
+                                            <td class="text-center">{{ $i + 1 }}</td>
                                             <td class="text-center">{{ $item->cif }}</td>
                                             <td>{{ $item->nasabah_nama }}</td>
                                             <td class="text-center">{{ $item->nasabah_nomor_rekening }}</td>

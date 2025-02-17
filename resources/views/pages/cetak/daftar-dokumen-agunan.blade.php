@@ -30,6 +30,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th class="text-center">No</th>
                 <th class="text-center">Cif</th>
                 <th class="text-center">Nama Nasabah</th>
                 <th class="text-center">Nomor Rekening</th>
@@ -38,8 +39,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($dokumenAgunan as $item)
+            @foreach ($dokumenAgunan as $i => $item)
                 <tr>
+                    <td class="align-middle text-center">{{ $i + 1 }}</td>
                     <td class="align-middle text-center">{{ $item->cif }}</td>
                     <td class="align-middle">{{ $item->nasabah_nama }}</td>
                     <td class="align-middle text-center">{{ $item->nasabah_nomor_rekening }}</td>
