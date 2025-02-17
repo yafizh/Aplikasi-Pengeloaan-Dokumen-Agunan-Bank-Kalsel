@@ -6,18 +6,6 @@
                 <span class="menu-title">Lemari</span>
             </a>
         </li>
-        {{-- <li class="nav-item {{ active_class(['nasabah', 'nasabah/*']) }}">
-            <a class="nav-link" href="{{ url('/nasabah') }}">
-                <i class="menu-icon mdi mdi-table-large"></i>
-                <span class="menu-title">Nasabah</span>
-            </a>
-        </li>
-        <li class="nav-item {{ active_class(['pegawai', 'pegawai/*']) }}">
-            <a class="nav-link" href="{{ url('/pegawai') }}">
-                <i class="menu-icon mdi mdi-table-large"></i>
-                <span class="menu-title">Pegawai</span>
-            </a>
-        </li> --}}
         <li
             class="nav-item {{ active_class([
                 'dokumen-agunan',
@@ -58,10 +46,6 @@
                         class="nav-item {{ active_class(['dokumen-agunan-peminjaman', 'dokumen-agunan-peminjaman/*']) }}">
                         <a class="nav-link" href="{{ url('/dokumen-agunan-peminjaman') }}">Peminjaman</a>
                     </li>
-                    {{-- <li
-                        class="nav-item {{ active_class(['dokumen-agunan-pengembalian', 'dokumen-agunan-pengembalian/*']) }}">
-                        <a class="nav-link" href="{{ url('/dokumen-agunan-pengembalian') }}">Pengembalian</a>
-                    </li> --}}
                 </ul>
             </div>
         </li>

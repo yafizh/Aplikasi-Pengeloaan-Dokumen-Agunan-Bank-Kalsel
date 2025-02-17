@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\DokumenAgunan;
 use App\Models\Lemari;
 use App\Models\LemariDetail;
-use App\Models\Nasabah;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
@@ -20,9 +19,8 @@ class DokumenAgunanController extends Controller
     public function create()
     {
         $pegawai = Pegawai::all();
-        $nasabah = Nasabah::all();
         $lemari = Lemari::with(['details' => fn($query) => $query->where('status', 'Tersedia')])->get();
-        return view('pages.dokumen-agunan.create', compact('pegawai', 'nasabah', 'lemari'));
+        return view('pages.dokumen-agunan.create', compact('pegawai', 'lemari'));
     }
 
     public function store(Request $request)
@@ -72,9 +70,8 @@ class DokumenAgunanController extends Controller
     public function edit(DokumenAgunan $dokumenAgunan)
     {
         $pegawai = Pegawai::all();
-        $nasabah = Nasabah::all();
         $lemari = Lemari::with(['details' => fn($query) => $query->where('status', 'Tersedia')->orWhere('id', $dokumenAgunan->lemariDetail->id)])->get();
-        return view('pages.dokumen-agunan.edit', compact('dokumenAgunan', 'pegawai', 'nasabah', 'lemari'));
+        return view('pages.dokumen-agunan.edit', compact('dokumenAgunan', 'pegawai', 'lemari'));
     }
 
     public function update(Request $request, DokumenAgunan $dokumenAgunan)

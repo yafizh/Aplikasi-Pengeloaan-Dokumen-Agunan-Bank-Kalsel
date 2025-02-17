@@ -15,11 +15,6 @@ class DokumenAgunan extends Model
         'berlaku_sampai' => 'date',
     ];
 
-    public function nasabah(): BelongsTo
-    {
-        return $this->belongsTo(Nasabah::class, 'nasabah_id', 'id');
-    }
-
     public function pegawai(): BelongsTo
     {
         return $this->belongsTo(Pegawai::class, 'pegawai_id', 'id');
