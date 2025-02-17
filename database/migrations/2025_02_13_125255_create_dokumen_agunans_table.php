@@ -11,13 +11,14 @@ return new class extends Migration
     {
         Schema::create((new DokumenAgunan)->getTable(), function (Blueprint $table) {
             $table->id();
-            $table->foreignId('nasabah_id');
             $table->foreignId('pegawai_id');
             $table->foreignId('lemari_detail_id');
-            $table->string('nama');
+            $table->string('nasabah_nama');
+            $table->string('nasabah_nomor_rekening');
             $table->string('cif');
             $table->date('tanggal_akad');
             $table->date('berlaku_sampai');
+            $table->string('jenis_kredit');
             $table->string('jenis_agunan');
             $table->string('status');
             $table->text('keterangan');

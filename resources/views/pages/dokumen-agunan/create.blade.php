@@ -27,21 +27,68 @@
                             <input type="text" class="form-control" id="cif" name="cif" required>
                         </div>
                         <div class="mb-3">
+                            <label for="nama" class="form-label">Jenis Kredit</label>
+                            <div class="d-flex" style="gap: 1rem;">
+                                <div>
+                                    <input type="radio" id="KreditMultiguna" value="Kredit Multiguna" name="jenis_kredit">
+                                    <label for="KreditMultiguna">
+                                        Kredit Multiguna
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="KPR" value="KPR" name="jenis_kredit">
+                                    <label for="KPR">
+                                        KPR
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="ModelKerja" value="Model Kerja" name="jenis_kredit">
+                                    <label for="ModelKerja">
+                                        Model Kerja
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Jenis Agunan</label>
+                            <div class="d-flex" style="gap: 1rem;">
+                                <div>
+                                    <input type="radio" id="SHM" value="SHM" name="jenis_agunan">
+                                    <label for="SHM">
+                                        SHM
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="SK" value="SK" name="jenis_agunan">
+                                    <label for="SK">
+                                        SK
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="BPKB" value="BPKB" name="jenis_agunan">
+                                    <label for="BPKB">
+                                        BPKB
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="mb-3">
                             <label for="nama" class="form-label">Nama Dokumen</label>
                             <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
                         <div class="mb-3">
                             <label for="jenis_agunan" class="form-label">Jenis Agunan</label>
                             <input type="text" class="form-control" id="jenis_agunan" name="jenis_agunan" required>
+                        </div> --}}
+                        <div class="mb-3">
+                            <label for="nasabah_nama" class="form-label">Nama Nasabah Pemilik Agunan</label>
+                            <input type="text" class="form-control" id="nasabah_nama" name="nasabah_nama" required>
                         </div>
                         <div class="mb-3">
-                            <label for="nasabah_id" class="form-label">Nasabah</label>
-                            <select name="nasabah_id" id="nasabah_id" class="form-control" required>
-                                <option value="" selected disabled>Pilih Nasabah</option>
-                                @foreach ($nasabah as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                                @endforeach
-                            </select>
+                            <label for="nasabah_nomor_rekening" class="form-label">Nomor Rekening Nasabah Pemilik
+                                Agunan</label>
+                            <input type="text" class="form-control" id="nasabah_nomor_rekening"
+                                name="nasabah_nomor_rekening" required>
                         </div>
                         <div class="mb-3">
                             <label for="pegawai_id" class="form-label">Pegawai Penerima Dokumen</label>
@@ -80,7 +127,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="berlaku_sampai" class="form-label">Berlaku Sampai</label>
-                            <input type="date" class="form-control" id="berlaku_sampai" name="berlaku_sampai" required>
+                            <input type="date" class="form-control" id="berlaku_sampai" name="berlaku_sampai"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan</label>

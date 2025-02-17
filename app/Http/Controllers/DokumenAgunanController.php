@@ -28,11 +28,12 @@ class DokumenAgunanController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nasabah_id' => 'required',
+            'nasabah_nama' => 'required',
+            'nasabah_nomor_rekening' => 'required',
             'pegawai_id' => 'required',
             'lemari_detail_id' => 'required',
             'cif' => 'required',
-            'nama' => 'required',
+            'jenis_kredit' => 'required',
             'jenis_agunan' => 'required',
             'tanggal_akad' => 'required|date',
             'berlaku_sampai' => 'required|date',
@@ -40,7 +41,19 @@ class DokumenAgunanController extends Controller
             'keterangan' => 'required',
         ]);
 
-        DokumenAgunan::create($data);
+        DokumenAgunan::create([
+            'nasabah_nama' => $data['nasabah_nama'],
+            'nasabah_nomor_rekening' => $data['nasabah_nomor_rekening'],
+            'pegawai_id' => $data['pegawai_id'],
+            'lemari_detail_id' => $data['lemari_detail_id'],
+            'cif' => $data['cif'],
+            'jenis_kredit' => $data['jenis_kredit'],
+            'jenis_agunan' => $data['jenis_agunan'],
+            'tanggal_akad' => $data['tanggal_akad'],
+            'berlaku_sampai' => $data['berlaku_sampai'],
+            'status' => $data['status'],
+            'keterangan' => $data['keterangan'],
+        ]);
         LemariDetail::where('id', $data['lemari_detail_id'])->update(['status' => 'Tidak Tersedia']);
 
         return redirect(route('dokumen-agunan.index'))->with('message', 'Berhasil menambah dokumen agunan');
@@ -67,11 +80,12 @@ class DokumenAgunanController extends Controller
     public function update(Request $request, DokumenAgunan $dokumenAgunan)
     {
         $data = $request->validate([
-            'nasabah_id' => 'required',
+            'nasabah_nama' => 'required',
+            'nasabah_nomor_rekening' => 'required',
             'pegawai_id' => 'required',
             'lemari_detail_id' => 'required',
             'cif' => 'required',
-            'nama' => 'required',
+            'jenis_kredit' => 'required',
             'jenis_agunan' => 'required',
             'tanggal_akad' => 'required|date',
             'berlaku_sampai' => 'required|date',

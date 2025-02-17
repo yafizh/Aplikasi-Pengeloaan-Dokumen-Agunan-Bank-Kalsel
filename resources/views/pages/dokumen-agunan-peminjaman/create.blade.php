@@ -23,11 +23,11 @@
                     <form action="{{ route('dokumen-agunan-peminjaman.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="dokumen_agunan_id" class="form-label">Dokumen Yang Dipinjam</label>
+                            <label for="dokumen_agunan_id" class="form-label">Dokumen Nasabah Yang Dipinjam</label>
                             <select name="dokumen_agunan_id" id="dokumen_agunan_id" class="form-control" required>
                                 <option value="" selected disabled>Pilih Dokumen Agunanan</option>
                                 @foreach ($dokumenAgunan as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->nasabah_nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -42,7 +42,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="tanggal_peminjaman" class="form-label">Tanggal Peminjaman</label>
-                            <input type="date" name="tanggal_peminjaman" id="tanggal_peminjaman" class="form-control" required>
+                            <input type="date" name="tanggal_peminjaman" id="tanggal_peminjaman" class="form-control"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tanggal_pengembalian" class="form-label">Tanggal Pengembalian</label>
+                            <input type="date" name="tanggal_pengembalian" id="tanggal_pengembalian" class="form-control"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="keperluan" class="form-label">Keperluan</label>

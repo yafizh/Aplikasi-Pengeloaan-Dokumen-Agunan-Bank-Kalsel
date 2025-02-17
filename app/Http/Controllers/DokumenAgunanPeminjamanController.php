@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DokumenAgunan;
 use App\Models\DokumenAgunanPeminjaman;
+use App\Models\DokumenAgunanPengembalian;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
@@ -35,10 +36,20 @@ class DokumenAgunanPeminjamanController extends Controller
             'dokumen_agunan_id' => 'required',
             'pegawai_id' => 'required',
             'tanggal_peminjaman' => 'required',
+            'tanggal_pengembalian' => 'required',
             'keperluan' => 'required'
         ]);
 
-        DokumenAgunanPeminjaman::create($data);
+        $id = DokumenAgunanPeminjaman::create([
+            'dokumen_agunan_id' => $data['dokumen_agunan_id'],
+            'pegawai_id' => $data['pegawai_id'],
+            'tanggal_peminjaman' => $data['tanggal_peminjaman'],
+            'keperluan' => $data['keperluan']
+        ])->id;
+        DokumenAgunanPengembalian::create([
+            'dokumen_agunan_peminjaman_id' => $id,
+            'tanggal_pengembalian' => $data['tanggal_pengembalian']
+        ]);
 
         return redirect(route('dokumen-agunan-peminjaman.index'))->with('message', 'Berhasil menambah peminjaman dokumen agunan');
     }
@@ -64,10 +75,19 @@ class DokumenAgunanPeminjamanController extends Controller
             'dokumen_agunan_id' => 'required',
             'pegawai_id' => 'required',
             'tanggal_peminjaman' => 'required',
+            'tanggal_pengembalian' => 'required',
             'keperluan' => 'required',
         ]);
 
-        $dokumenAgunanPeminjaman->update($data);
+        $dokumenAgunanPeminjaman->update([
+            'dokumen_agunan_id' => $data['dokumen_agunan_id'],
+            'pegawai_id' => $data['pegawai_id'],
+            'tanggal_peminjaman' => $data['tanggal_peminjaman'],
+            'keperluan' => $data['keperluan']
+        ]);
+        $dokumenAgunanPeminjaman->pengembalian->update([
+            'tanggal_pengembalian' => $data['tanggal_pengembalian']
+        ]);
 
         return redirect(route('dokumen-agunan-peminjaman.index'))->with('message', 'Berhasil edit peminjaman dokumen agunan');
     }

@@ -51,6 +51,11 @@
                                 required value="{{ $dokumenAgunanPeminjaman->tanggal_peminjaman->format('Y-m-d') }}">
                         </div>
                         <div class="mb-3">
+                            <label for="tanggal_pengembalian" class="form-label">Tanggal Pengembalian</label>
+                            <input type="date" name="tanggal_pengembalian" id="tanggal_pengembalian" class="form-control"
+                                required value="{{ $dokumenAgunanPeminjaman->pengembalian->tanggal_pengembalian->format('Y-m-d') }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="keperluan" class="form-label">Keperluan</label>
                             <textarea name="keperluan" id="keperluan" class="form-control" required>{{ $dokumenAgunanPeminjaman->keperluan }}</textarea>
                         </div>

@@ -11,12 +11,12 @@ return new class extends Migration
     {
         Schema::create((new Pegawai)->getTable(), function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id');
+            $table->foreignId('pengguna_id')->nullable();
             $table->string('nama');
             $table->string('jenis_kelamin');
             $table->date('tanggal_lahir');
             $table->string('nomor_telepon');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->text('alamat');
             $table->timestamps();
         });
