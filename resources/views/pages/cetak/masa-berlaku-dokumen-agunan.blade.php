@@ -13,11 +13,24 @@
     @include('pages.cetak.header')
     <hr>
     <h3 class="text-center">Laporan Masa Berlaku Dokumen Agunan</h3>
+    @if ($filter['dari_berlaku_sampai'] && $filter['sampai_berlaku_sampai'])
+        <h5 class="mb-0">Filter</h5>
+        <table>
+            <tr>
+                <td>Dari Berlaku Sampai</td>
+                <td>: {{ $filter['dari_berlaku_sampai'] }}</td>
+            </tr>
+            <tr>
+                <td>Sampai Berlaku Sampai</td>
+                <td>: {{ $filter['sampai_berlaku_sampai'] }}</td>
+            </tr>
+        </table>
+    @endif
     <br>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th class="text-center">Nama Dokumen</th>
+                <th class="text-center">Cif</th>
                 <th class="text-center">Nama Nasabah</th>
                 <th class="text-center">Nomor Rekening</th>
                 <th class="text-center">Berlaku Sampai</th>
@@ -27,9 +40,9 @@
             @if (count($dokumenAgunan))
                 @foreach ($dokumenAgunan as $item)
                     <tr>
-                        <td class="align-middle">{{ $item->nama }}</td>
-                        <td class="align-middle">{{ $item->nasabah->nama }}</td>
-                        <td class="align-middle text-center">{{ $item->nasabah->nomor_rekening }}</td>
+                        <td class="align-middle text-center">{{ $item->cif }}</td>
+                        <td class="align-middle">{{ $item->nasabah_nama }}</td>
+                        <td class="align-middle text-center">{{ $item->nasabah_nomor_rekening }}</td>
                         <td class="align-middle text-center">{{ $item->berlaku_sampai_formatted }}</td>
                     </tr>
                 @endforeach

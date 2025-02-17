@@ -5,39 +5,103 @@ namespace App\Http\Controllers;
 use App\Models\DokumenAgunan;
 use App\Models\DokumenAgunanPeminjaman;
 use App\Models\Lemari;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CetakController extends Controller
 {
-    public function daftarAgunan()
+    public function daftarAgunan(Request $request)
     {
-        $dokumenAgunan = DokumenAgunan::all()->map(function ($item) {
+        $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
+        $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
+
+        $dokumenAgunan = DokumenAgunan::select();
+        $filter = [];
+
+        if ($dariTanggalAkad && $sampaiTanggalAkad) {
+            $dokumenAgunan = $dokumenAgunan->whereBetween('tanggal_akad', [$dariTanggalAkad, $sampaiTanggalAkad]);
+            $dariTanggalAkad = Carbon::createFromDate($dariTanggalAkad)->locale('ID');
+            $sampaiTanggalAkad = Carbon::createFromDate($sampaiTanggalAkad)->locale('ID');
+            $filter['dari_tanggal_akad'] = "{$dariTanggalAkad->day} {$dariTanggalAkad->getTranslatedMonthName()} {$dariTanggalAkad->year}";
+            $filter['sampai_tanggal_akad'] = "{$sampaiTanggalAkad->day} {$sampaiTanggalAkad->getTranslatedMonthName()} {$sampaiTanggalAkad->year}";
+        }
+
+        $dokumenAgunan = $dokumenAgunan->get()->map(function ($item) {
             $tanggalAkad = $item->tanggal_akad->locale('ID');
             $item->tanggal_akad_formatted = "{$tanggalAkad->getTranslatedDayName()}, {$tanggalAkad->day} {$tanggalAkad->getTranslatedMonthName()} {$tanggalAkad->year}";
             return $item;
         });
-        return view('pages.cetak.daftar-dokumen-agunan', compact('dokumenAgunan'));
+
+        return view('pages.cetak.daftar-dokumen-agunan', compact('dokumenAgunan', 'filter'));
     }
 
-    public function statusVerifikasi()
+    public function statusVerifikasi(Request $request)
     {
-        $dokumenAgunan = DokumenAgunan::all();
-        return view('pages.cetak.status-verifikasi-dokumen-agunan', compact('dokumenAgunan'));
+        $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
+        $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
+
+        $dokumenAgunan = DokumenAgunan::select();
+        $filter = [];
+
+        if ($dariTanggalAkad && $sampaiTanggalAkad) {
+            $dokumenAgunan = $dokumenAgunan->whereBetween('tanggal_akad', [$dariTanggalAkad, $sampaiTanggalAkad]);
+            $dariTanggalAkad = Carbon::createFromDate($dariTanggalAkad)->locale('ID');
+            $sampaiTanggalAkad = Carbon::createFromDate($sampaiTanggalAkad)->locale('ID');
+            $filter['dari_tanggal_akad'] = "{$dariTanggalAkad->day} {$dariTanggalAkad->getTranslatedMonthName()} {$dariTanggalAkad->year}";
+            $filter['sampai_tanggal_akad'] = "{$sampaiTanggalAkad->day} {$sampaiTanggalAkad->getTranslatedMonthName()} {$sampaiTanggalAkad->year}";
+        }
+
+        $dokumenAgunan = $dokumenAgunan->get()->map(function ($item) {
+            $tanggalAkad = $item->tanggal_akad->locale('ID');
+            $item->tanggal_akad_formatted = "{$tanggalAkad->getTranslatedDayName()}, {$tanggalAkad->day} {$tanggalAkad->getTranslatedMonthName()} {$tanggalAkad->year}";
+            return $item;
+        });
+
+        return view('pages.cetak.status-verifikasi-dokumen-agunan', compact('dokumenAgunan', 'filter'));
     }
 
-    public function masaBerlaku()
+    public function masaBerlaku(Request $request)
     {
-        $dokumenAgunan = DokumenAgunan::all()->map(function ($item) {
+        $dariBerlakuSampai = $request->get('dari_berlaku_sampai') ?? null;
+        $sampaiBerlakuSampai = $request->get('sampai_berlaku_sampai') ?? null;
+
+        $dokumenAgunan = DokumenAgunan::select();
+        $filter = [];
+
+        if ($dariBerlakuSampai && $sampaiBerlakuSampai) {
+            $dokumenAgunan = $dokumenAgunan->whereBetween('berlaku_sampai', [$dariBerlakuSampai, $sampaiBerlakuSampai]);
+            $dariBerlakuSampai = Carbon::createFromDate($dariBerlakuSampai)->locale('ID');
+            $sampaiBerlakuSampai = Carbon::createFromDate($sampaiBerlakuSampai)->locale('ID');
+            $filter['dari_berlaku_sampai'] = "{$dariBerlakuSampai->day} {$dariBerlakuSampai->getTranslatedMonthName()} {$dariBerlakuSampai->year}";
+            $filter['sampai_berlaku_sampai'] = "{$sampaiBerlakuSampai->day} {$sampaiBerlakuSampai->getTranslatedMonthName()} {$sampaiBerlakuSampai->year}";
+        }
+
+        $dokumenAgunan = $dokumenAgunan->get()->map(function ($item) {
             $berlakuSampai = $item->berlaku_sampai->locale('ID');
             $item->berlaku_sampai_formatted = "{$berlakuSampai->getTranslatedDayName()}, {$berlakuSampai->day} {$berlakuSampai->getTranslatedMonthName()} {$berlakuSampai->year}";
             return $item;
         });
-        return view('pages.cetak.masa-berlaku-dokumen-agunan', compact('dokumenAgunan'));
+
+        return view('pages.cetak.masa-berlaku-dokumen-agunan', compact('dokumenAgunan', 'filter'));
     }
 
-    public function peminjamanPengembalian()
+    public function peminjamanPengembalian(Request $request)
     {
-        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan', 'pegawai', 'pengembalian')
+        $dariTanggalPeminjaman = $request->get('dari_tanggal_peminjaman') ?? null;
+        $sampaiTanggalPeminjaman = $request->get('sampai_tanggal_peminjaman') ?? null;
+
+        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan', 'pegawai', 'pengembalian');
+        $filter = [];
+
+        if ($dariTanggalPeminjaman && $sampaiTanggalPeminjaman) {
+            $dokumenAgunanPeminjaman = $dokumenAgunanPeminjaman->whereBetween('tanggal_peminjaman', [$dariTanggalPeminjaman, $sampaiTanggalPeminjaman]);
+            $dariTanggalPeminjaman = Carbon::createFromDate($dariTanggalPeminjaman)->locale('ID');
+            $sampaiTanggalPeminjaman = Carbon::createFromDate($sampaiTanggalPeminjaman)->locale('ID');
+            $filter['dari_tanggal_peminjaman'] = "{$dariTanggalPeminjaman->day} {$dariTanggalPeminjaman->getTranslatedMonthName()} {$dariTanggalPeminjaman->year}";
+            $filter['sampai_tanggal_peminjaman'] = "{$sampaiTanggalPeminjaman->day} {$sampaiTanggalPeminjaman->getTranslatedMonthName()} {$sampaiTanggalPeminjaman->year}";
+        }
+
+        $dokumenAgunanPeminjaman = $dokumenAgunanPeminjaman
             ->get()
             ->map(function ($item) {
                 $tanggalPeminjaman = $item->tanggal_peminjaman->locale('ID');
@@ -49,7 +113,7 @@ class CetakController extends Controller
                 } else $item->tanggal_pengembalian_formatted = '-';
                 return $item;
             });
-        return view('pages.cetak.peminjaman-pengembalian-dokumen-agunan', compact('dokumenAgunanPeminjaman'));
+        return view('pages.cetak.peminjaman-pengembalian-dokumen-agunan', compact('dokumenAgunanPeminjaman', 'filter'));
     }
 
     public function letakDokumenAgunan()

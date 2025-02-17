@@ -17,7 +17,9 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th class="text-center">Nama Dokumen</th>
+                <th class="text-center">Cif</th>
+                <th class="text-center">Jenis Kredit</th>
+                <th class="text-center">Jenis Agunan</th>
                 <th class="text-center">Lokasi Dokumen</th>
             </tr>
         </thead>
@@ -25,7 +27,9 @@
             @if (count($dokumenAgunan))
                 @foreach ($dokumenAgunan as $item)
                     <tr>
-                        <td class="align-middle">{{ $item->nama }}</td>
+                        <td class="align-middle text-center">{{ $item->cif }}</td>
+                        <td class="align-middle text-center">{{ $item->jenis_agunan }}</td>
+                        <td class="align-middle text-center">{{ $item->jenis_kredit }}</td>
                         <td class="align-middle text-center">
                             {{ $item->lemariDetail->lemari->nama }} -> {{ $item->lemariDetail->nomor }}
                         </td>

@@ -5,38 +5,90 @@ namespace App\Http\Controllers;
 use App\Models\DokumenAgunan;
 use App\Models\DokumenAgunanPeminjaman;
 use App\Models\Lemari;
+use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function daftarAgunan()
+    public function daftarAgunan(Request $request)
     {
-        $dokumenAgunan = DokumenAgunan::all()->map(function ($item) {
+        $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
+        $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
+
+        $dokumenAgunan = DokumenAgunan::select();
+        $urlCetak = '/cetak/daftar-agunan';
+
+        if ($dariTanggalAkad && $sampaiTanggalAkad) {
+            $dokumenAgunan = $dokumenAgunan->whereBetween('tanggal_akad', [$dariTanggalAkad, $sampaiTanggalAkad]);
+            $urlCetak .= "?dari_tanggal_akad={$dariTanggalAkad}&sampai_tanggal_akad={$sampaiTanggalAkad}";
+        }
+
+        $dokumenAgunan = $dokumenAgunan->get()->map(function ($item) {
             $tanggalAkad = $item->tanggal_akad->locale('ID');
             $item->tanggal_akad_formatted = "{$tanggalAkad->getTranslatedDayName()}, {$tanggalAkad->day} {$tanggalAkad->getTranslatedMonthName()} {$tanggalAkad->year}";
             return $item;
         });
-        return view('pages.report.daftar-dokumen-agunan', compact('dokumenAgunan'));
+
+        return view('pages.report.daftar-dokumen-agunan', compact('dokumenAgunan', 'urlCetak'));
     }
 
-    public function statusVerifikasi()
+    public function statusVerifikasi(Request $request)
     {
-        $dokumenAgunan = DokumenAgunan::all();
-        return view('pages.report.status-verifikasi-dokumen-agunan', compact('dokumenAgunan'));
+        $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
+        $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
+
+        $dokumenAgunan = DokumenAgunan::select();
+        $urlCetak = '/cetak/status-verifikasi';
+
+        if ($dariTanggalAkad && $sampaiTanggalAkad) {
+            $dokumenAgunan = $dokumenAgunan->whereBetween('tanggal_akad', [$dariTanggalAkad, $sampaiTanggalAkad]);
+            $urlCetak .= "?dari_tanggal_akad={$dariTanggalAkad}&sampai_tanggal_akad={$sampaiTanggalAkad}";
+        }
+
+        $dokumenAgunan = $dokumenAgunan->get()->map(function ($item) {
+            $tanggalAkad = $item->tanggal_akad->locale('ID');
+            $item->tanggal_akad_formatted = "{$tanggalAkad->getTranslatedDayName()}, {$tanggalAkad->day} {$tanggalAkad->getTranslatedMonthName()} {$tanggalAkad->year}";
+            return $item;
+        });
+
+        return view('pages.report.status-verifikasi-dokumen-agunan', compact('dokumenAgunan', 'urlCetak'));
     }
 
-    public function masaBerlaku()
+    public function masaBerlaku(Request $request)
     {
-        $dokumenAgunan = DokumenAgunan::all()->map(function ($item) {
+        $dariBerlakuSampai = $request->get('dari_berlaku_sampai') ?? null;
+        $sampaiBerlakuSampai = $request->get('sampai_berlaku_sampai') ?? null;
+
+        $dokumenAgunan = DokumenAgunan::select();
+        $urlCetak = '/cetak/masa-berlaku';
+
+        if ($dariBerlakuSampai && $sampaiBerlakuSampai) {
+            $dokumenAgunan = $dokumenAgunan->whereBetween('berlaku_sampai', [$dariBerlakuSampai, $sampaiBerlakuSampai]);
+            $urlCetak .= "?dari_berlaku_sampai={$dariBerlakuSampai}&sampai_berlaku_sampai={$sampaiBerlakuSampai}";
+        }
+
+        $dokumenAgunan = $dokumenAgunan->get()->map(function ($item) {
             $berlakuSampai = $item->berlaku_sampai->locale('ID');
             $item->berlaku_sampai_formatted = "{$berlakuSampai->getTranslatedDayName()}, {$berlakuSampai->day} {$berlakuSampai->getTranslatedMonthName()} {$berlakuSampai->year}";
             return $item;
         });
-        return view('pages.report.masa-berlaku-dokumen-agunan', compact('dokumenAgunan'));
+
+        return view('pages.report.masa-berlaku-dokumen-agunan', compact('dokumenAgunan', 'urlCetak'));
     }
 
-    public function peminjamanPengembalian()
+    public function peminjamanPengembalian(Request $request)
     {
-        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan', 'pegawai', 'pengembalian')
+        $dariTanggalPeminjaman = $request->get('dari_tanggal_peminjaman') ?? null;
+        $sampaiTanggalPeminjaman = $request->get('sampai_tanggal_peminjaman') ?? null;
+
+        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan', 'pegawai', 'pengembalian');
+        $urlCetak = '/cetak/peminjaman-pengembalian';
+
+        if ($dariTanggalPeminjaman && $sampaiTanggalPeminjaman) {
+            $dokumenAgunanPeminjaman = $dokumenAgunanPeminjaman->whereBetween('tanggal_peminjaman', [$dariTanggalPeminjaman, $sampaiTanggalPeminjaman]);
+            $urlCetak .= "?dari_tanggal_peminjaman={$dariTanggalPeminjaman}&sampai_tanggal_peminjaman={$sampaiTanggalPeminjaman}";
+        }
+
+        $dokumenAgunanPeminjaman = $dokumenAgunanPeminjaman
             ->get()
             ->map(function ($item) {
                 $tanggalPeminjaman = $item->tanggal_peminjaman->locale('ID');
@@ -49,7 +101,7 @@ class ReportController extends Controller
 
                 return $item;
             });
-        return view('pages.report.peminjaman-pengembalian-dokumen-agunan', compact('dokumenAgunanPeminjaman'));
+        return view('pages.report.peminjaman-pengembalian-dokumen-agunan', compact('dokumenAgunanPeminjaman', 'urlCetak'));
     }
 
     public function letakDokumenAgunan()
