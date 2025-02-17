@@ -15,14 +15,24 @@
                             value="{{ $dokumenAgunan->cif }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required
-                            value="{{ $dokumenAgunan->nama }}" disabled>
+                        <label class="form-label">Jenis Kredit</label>
+                        <input type="text" class="form-control" required value="{{ $dokumenAgunan->jenis_kredit }}"
+                            disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nasabah" class="form-label">Nasabah</label>
-                        <input type="text" class="form-control" id="nasabah" name="nasabah" required
-                            value="{{ $dokumenAgunan->nasabah->nama }}" disabled>
+                        <label class="form-label">Jenis Agunan</label>
+                        <input type="text" class="form-control" required value="{{ $dokumenAgunan->jenis_agunan }}"
+                            disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nama Nasabah</label>
+                        <input type="text" class="form-control" required value="{{ $dokumenAgunan->nasabah_nama }}"
+                            disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nomor Rekening Nasabah</label>
+                        <input type="text" class="form-control" required
+                            value="{{ $dokumenAgunan->nasabah_nomor_rekening }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="pegawai" class="form-label">Pegawai Penerima Dokumen</label>

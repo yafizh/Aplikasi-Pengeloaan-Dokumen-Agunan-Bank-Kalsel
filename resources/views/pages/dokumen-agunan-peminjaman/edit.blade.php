@@ -25,12 +25,12 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="dokumen_agunan_id" class="form-label">Dokumen Yang Dipinjam</label>
+                            <label for="dokumen_agunan_id" class="form-label">Dokumen Nasabah Yang Dipinjam</label>
                             <select name="dokumen_agunan_id" id="dokumen_agunan_id" class="form-control" required>
                                 @foreach ($dokumenAgunan as $item)
                                     <option {{ $item->id == $dokumenAgunanPeminjaman->dokumen_agunan_id ? 'selected' : '' }}
                                         value="{{ $item->id }}">
-                                        {{ $item->nama }}
+                                        {{ $item->nasabah_nama }}
                                     </option>
                                 @endforeach
                             </select>

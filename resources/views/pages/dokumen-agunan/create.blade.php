@@ -72,14 +72,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="mb-3">
-                            <label for="nama" class="form-label">Nama Dokumen</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="jenis_agunan" class="form-label">Jenis Agunan</label>
-                            <input type="text" class="form-control" id="jenis_agunan" name="jenis_agunan" required>
-                        </div> --}}
                         <div class="mb-3">
                             <label for="nasabah_nama" class="form-label">Nama Nasabah Pemilik Agunan</label>
                             <input type="text" class="form-control" id="nasabah_nama" name="nasabah_nama" required>

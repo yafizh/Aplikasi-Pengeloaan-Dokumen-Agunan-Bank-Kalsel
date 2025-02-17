@@ -20,7 +20,7 @@
                         <table id="example" class="table">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Nama Dokumen</th>
+                                    <th class="text-center">Cif</th>
                                     <th class="text-center">Pegawai Peminjam</th>
                                     <th class="text-center">Tanggal Pinjam</th>
                                     <th class="text-center">Keperluan</th>
@@ -31,7 +31,7 @@
                                 @if (count($dokumenAgunanPeminjaman))
                                     @foreach ($dokumenAgunanPeminjaman as $item)
                                         <tr>
-                                            <td>{{ $item->dokumenAgunan->nama }}</td>
+                                            <td class="text-center">{{ $item->dokumenAgunan->cif }}</td>
                                             <td>{{ $item->pegawai->nama }}</td>
                                             <td class="text-center">{{ $item->tanggal_peminjaman_formatted }}</td>
                                             <td>{{ $item->keperluan }}</td>

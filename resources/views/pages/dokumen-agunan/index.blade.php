@@ -20,7 +20,7 @@
                         <table id="example" class="table">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Nama Dokumen</th>
+                                    <th class="text-center">Cif</th>
                                     <th class="text-center">Nama Nasabah</th>
                                     <th class="text-center">Pegawai Penerima Dokumen</th>
                                     <th class="text-center" style="width: 1%;white-space: nowrap;">Aksi</th>
@@ -30,7 +30,7 @@
                                 @if (count($dokumenAgunan))
                                     @foreach ($dokumenAgunan as $item)
                                         <tr>
-                                            <td>{{ $item->nama }}</td>
+                                            <td class="text-center">{{ $item->cif }}</td>
                                             <td>{{ $item->nasabah_nama }}</td>
                                             <td>{{ $item->pegawai->nama }}</td>
                                             <td class="d-flex" style="gap: .6rem;">

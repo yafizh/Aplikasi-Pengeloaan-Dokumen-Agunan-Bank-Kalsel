@@ -26,25 +26,72 @@
                         <div class="mb-3">
                             <label for="cif" class="form-label">Cif</label>
                             <input type="text" class="form-control" id="cif" name="cif" required
-                                value="{{ $dokumenAgunan->nama }}">
+                                value="{{ $dokumenAgunan->cif }}">
                         </div>
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required
-                                value="{{ $dokumenAgunan->nama }}">
+                            <label for="nama" class="form-label">Jenis Kredit</label>
+                            <div class="d-flex" style="gap: 1rem;">
+                                <div>
+                                    <input type="radio" id="KreditMultiguna" value="Kredit Multiguna" name="jenis_kredit"
+                                        {{ $dokumenAgunan->jenis_kredit == 'Kredit Multiguna' ? 'checked' : '' }}>
+                                    <label for="KreditMultiguna">
+                                        Kredit Multiguna
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="KPR" value="KPR" name="jenis_kredit"
+                                        {{ $dokumenAgunan->jenis_kredit == 'KPR' ? 'checked' : '' }}>
+                                    <label for="KPR">
+                                        KPR
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="ModelKerja" value="Model Kerja" name="jenis_kredit"
+                                        {{ $dokumenAgunan->jenis_kredit == 'Modal Kerja' ? 'checked' : '' }}>
+                                    <label for="ModelKerja">
+                                        Model Kerja
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="jenis_agunan" class="form-label">Jenis Agunan</label>
-                            <input type="text" class="form-control" id="jenis_agunan" name="jenis_agunan" required
-                                value="{{ $dokumenAgunan->jenis_agunan }}">
+                            <label for="nama" class="form-label">Jenis Agunan</label>
+                            <div class="d-flex" style="gap: 1rem;">
+                                <div>
+                                    <input type="radio" id="SHM" value="SHM" name="jenis_agunan"
+                                        {{ $dokumenAgunan->jenis_agunan == 'SHM' ? 'checked' : '' }}>
+                                    <label for="SHM">
+                                        SHM
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="SK" value="SK" name="jenis_agunan"
+                                        {{ $dokumenAgunan->jenis_agunan == 'SK' ? 'checked' : '' }}>
+                                    <label for="SK">
+                                        SK
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="BPKB" value="BPKB" name="jenis_agunan"
+                                        {{ $dokumenAgunan->jenis_agunan == 'BPKB' ? 'checked' : '' }}>
+                                    <label for="BPKB">
+                                        BPKB
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="nasabah_nama" class="form-label">Nama Nasabah Pemilik Agunan</label>
-                            <input type="text" class="form-control" id="nasabah_nama" name="nasabah_nama" required value="{{ $dokumenAgunan->nasabah_nama }}">
+                            <input type="text" class="form-control" id="nasabah_nama" name="nasabah_nama" required
+                                value="{{ $dokumenAgunan->nasabah_nama }}">
                         </div>
                         <div class="mb-3">
-                            <label for="nasabah_nomor_rekening" class="form-label">Nomor Rekening Nasabah Pemilik Agunan</label>
-                            <input type="text" class="form-control" id="nasabah_nomor_rekening" name="nasabah_nomor_rekening" required value="{{ $dokumenAgunan->nasabah_nomor_rekening }}">
+                            <label for="nasabah_nomor_rekening" class="form-label">
+                                Nomor Rekening Nasabah Pemilik Agunan</label>
+
+                            <input type="text" class="form-control" id="nasabah_nomor_rekening"
+                                name="nasabah_nomor_rekening" required
+                                value="{{ $dokumenAgunan->nasabah_nomor_rekening }}">
                         </div>
                         <div class="mb-3">
                             <label for="pegawai_id" class="form-label">Pegawai Penerima Dokumen</label>
@@ -87,8 +134,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="berlaku_sampai" class="form-label">Berlaku Sampai</label>
-                            <input type="date" class="form-control" id="berlaku_sampai" name="berlaku_sampai" required
-                                value="{{ $dokumenAgunan->berlaku_sampai->format('Y-m-d') }}">
+                            <input type="date" class="form-control" id="berlaku_sampai" name="berlaku_sampai"
+                                required value="{{ $dokumenAgunan->berlaku_sampai->format('Y-m-d') }}">
                         </div>
                         <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan</label>
