@@ -5,6 +5,7 @@ use App\Http\Controllers\DokumenAgunanController;
 use App\Http\Controllers\DokumenAgunanPeminjamanController;
 use App\Http\Controllers\LemariController;
 use App\Http\Controllers\LemariDetailController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,8 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
 Route::resource('/lemari', LemariController::class);
 Route::resource('/lemari-detail', LemariDetailController::class);
 Route::resource('/dokumen-agunan', DokumenAgunanController::class);
