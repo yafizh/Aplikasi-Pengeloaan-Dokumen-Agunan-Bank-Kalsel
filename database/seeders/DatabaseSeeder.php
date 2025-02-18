@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Lemari;
 use App\Models\LemariDetail;
 use App\Models\Pegawai;
+use App\Models\Pengguna;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+
 
         $pegawai = [
             [
@@ -155,5 +157,11 @@ class DatabaseSeeder extends Seeder
                 'status' => 'Tersedia',
             ]);
         }
+
+        Pengguna::create([
+            'username' => 'admin',
+            'password' => 'admin',
+            'status' => 'Admin'
+        ]);
     }
 }
