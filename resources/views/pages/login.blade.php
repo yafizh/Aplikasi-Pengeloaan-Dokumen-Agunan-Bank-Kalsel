@@ -25,7 +25,7 @@
                     <form class="mt-3" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="username" class="form-label">Usernae</label>
+                            <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username">
                         </div>
                         <div class="mb-3">
