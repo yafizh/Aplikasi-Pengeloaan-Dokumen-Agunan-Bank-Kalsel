@@ -46,10 +46,10 @@
                                     </label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="ModelKerja" value="Model Kerja" name="jenis_kredit"
+                                    <input type="radio" id="ModalKerja" value="Modal Kerja" name="jenis_kredit"
                                         {{ $dokumenAgunan->jenis_kredit == 'Modal Kerja' ? 'checked' : '' }}>
-                                    <label for="ModelKerja">
-                                        Model Kerja
+                                    <label for="ModalKerja">
+                                        Modal Kerja
                                     </label>
                                 </div>
                             </div>
