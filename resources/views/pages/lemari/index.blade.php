@@ -29,8 +29,8 @@
                                 @if (count($lemari))
                                     @foreach ($lemari as $item)
                                         <tr>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->lokasi }}</td>
+                                            <td class="text-center">{{ $item->nama }}</td>
+                                            <td class="text-center">{{ $item->lokasi }}</td>
                                             <td class="d-flex" style="gap: .6rem;">
                                                 <a href="{{ route('lemari.show', $item->id) }}"
                                                     class="btn btn-info">Lihat</a>

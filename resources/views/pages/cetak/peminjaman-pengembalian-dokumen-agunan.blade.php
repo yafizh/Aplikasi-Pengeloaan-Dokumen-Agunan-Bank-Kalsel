@@ -42,8 +42,8 @@
                 @foreach ($dokumenAgunanPeminjaman as $i => $item)
                     <tr>
                         <td class="align-middle text-center">{{ $i + 1 }}</td>
-                        <td class="align-middle">{{ $item->dokumenAgunan->nasabah_nama }}</td>
-                        <td class="align-middle">{{ $item->pegawai->nama }}</td>
+                        <td class="align-middle text-center">{{ $item->dokumenAgunan->nasabah_nama }}</td>
+                        <td class="align-middle text-center">{{ $item->pegawai->nama }}</td>
                         <td class="align-middle text-center">{{ $item->tanggal_peminjaman_formatted }}</td>
                         <td class="align-middle text-center">
                             {{ $item->tanggal_pengembalian_formatted ?? 'Belum Dikembalikan' }}

@@ -43,7 +43,7 @@
                     <tr>
                         <td class="align-middle text-center">{{ $i + 1 }}</td>
                         <td class="align-middle text-center">{{ $item->cif }}</td>
-                        <td class="align-middle">{{ $item->nasabah_nama }}</td>
+                        <td class="align-middle text-center">{{ $item->nasabah_nama }}</td>
                         <td class="align-middle text-center">{{ $item->nasabah_nomor_rekening }}</td>
                         <td class="align-middle text-center">{{ $item->berlaku_sampai_formatted }}</td>
                     </tr>

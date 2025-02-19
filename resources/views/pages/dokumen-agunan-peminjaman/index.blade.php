@@ -32,9 +32,9 @@
                                     @foreach ($dokumenAgunanPeminjaman as $item)
                                         <tr>
                                             <td class="text-center">{{ $item->dokumenAgunan->cif }}</td>
-                                            <td>{{ $item->pegawai->nama }}</td>
+                                            <td class="text-center">{{ $item->pegawai->nama }}</td>
                                             <td class="text-center">{{ $item->tanggal_peminjaman_formatted }}</td>
-                                            <td>{{ $item->keperluan }}</td>
+                                            <td class="text-center">{{ $item->keperluan }}</td>
                                             <td class="d-flex" style="gap: .6rem;">
                                                 <a href="{{ route('dokumen-agunan-peminjaman.edit', $item->id) }}"
                                                     class="btn btn-warning">Edit</a>
