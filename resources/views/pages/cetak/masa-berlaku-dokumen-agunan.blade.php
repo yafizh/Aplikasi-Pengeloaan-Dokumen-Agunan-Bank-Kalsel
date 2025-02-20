@@ -13,7 +13,7 @@
     @include('pages.cetak.header')
     <hr>
     <h3 class="text-center">Laporan Masa Berlaku Dokumen Agunan</h3>
-    @if ($filter['dari_berlaku_sampai'] && $filter['sampai_berlaku_sampai'])
+    @if (isset($filter['dari_berlaku_sampai']) && isset($filter['sampai_berlaku_sampai']))
         <h5 class="mb-0">Filter</h5>
         <table>
             <tr>

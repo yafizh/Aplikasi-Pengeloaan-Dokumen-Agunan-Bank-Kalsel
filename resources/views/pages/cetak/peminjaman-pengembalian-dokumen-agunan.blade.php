@@ -13,7 +13,7 @@
     @include('pages.cetak.header')
     <hr>
     <h3 class="text-center">Laporan Peminjaman dan Pengembalian Dokumen Agunan</h3>
-    @if ($filter['dari_tanggal_peminjaman'] && $filter['sampai_tanggal_peminjaman'])
+    @if (isset($filter['dari_tanggal_peminjaman']) && isset($filter['sampai_tanggal_peminjaman']))
         <h5 class="mb-0">Filter</h5>
         <table>
             <tr>
