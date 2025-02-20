@@ -15,7 +15,9 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-center">BANK KALSEL</h5>
+                    <div class="mb-3 w-100 text-center">
+                        <img src="{{ url('assets/images/logo.png') }}" alt="">
+                    </div>
                     <h5 class="text-center mb-3">APLIKASI PENGELOLAAN DOKUMEN AGUNAN</h5>
                     @if (session('error'))
                         <div class="alert alert-danger" role="alert">
