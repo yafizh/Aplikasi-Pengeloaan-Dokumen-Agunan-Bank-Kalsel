@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\DokumenAgunan;
 use App\Models\DokumenAgunanPeminjaman;
 use App\Models\Lemari;
+use App\Models\Nasabah;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -114,5 +116,21 @@ class ReportController extends Controller
     {
         $lemari = Lemari::with('details')->get();
         return view('pages.report.ketersediaan-ruang-penyimpanan', compact('lemari'));
+    }
+
+    public function nasabah()
+    {
+        $nasabah = Nasabah::all();
+        return view('pages.report.nasabah', compact('nasabah'));
+    }
+
+    public function pegawai()
+    {
+        $pegawai = Pegawai::with([
+            'dokumenAgunan',
+            'dokumenAgunanPeminjaman'
+        ])->get();
+
+        return view('pages.report.pegawai', compact('pegawai'));
     }
 }

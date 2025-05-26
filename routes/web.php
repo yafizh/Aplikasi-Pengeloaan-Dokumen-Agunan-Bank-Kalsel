@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/peminjaman-pengembalian', 'peminjamanPengembalian');
             Route::get('/letak-dokumen-agunan', 'letakDokumenAgunan');
             Route::get('/ketersediaan-ruang-penyimpanan', 'ketersediaanRuangPenyimpanan');
+            Route::get('/nasabah', 'nasabah');
+            Route::get('/pegawai', 'pegawai');
         });
     Route::controller(CetakController::class)
         ->prefix('cetak')
@@ -45,5 +47,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/peminjaman-pengembalian', 'peminjamanPengembalian');
             Route::get('/letak-dokumen-agunan', 'letakDokumenAgunan');
             Route::get('/ketersediaan-ruang-penyimpanan', 'ketersediaanRuangPenyimpanan');
+            Route::get('/nasabah', 'nasabah');
+            Route::get('/pegawai', 'pegawai');
         });
 });
