@@ -1,8 +1,20 @@
 <nav class="sidebar sidebar-offcanvas dynamic-active-class-disabled" id="sidebar">
     <ul class="nav">
+        <li class="nav-item {{ active_class(['pegawai', 'pegawai/*']) }}">
+            <a class="nav-link" href="{{ url('/pegawai') }}">
+                <i class="menu-icon mdi mdi-account-outline"></i>
+                <span class="menu-title">Pegawai</span>
+            </a>
+        </li>
+        <li class="nav-item {{ active_class(['nasabah', 'nasabah/*']) }}">
+            <a class="nav-link" href="{{ url('/nasabah') }}">
+                <i class="menu-icon mdi mdi-account-multiple-outline"></i>
+                <span class="menu-title">Nasabah</span>
+            </a>
+        </li>
         <li class="nav-item {{ active_class(['lemari', 'lemari/*', 'lemari-detail/*']) }}">
             <a class="nav-link" href="{{ url('/lemari') }}">
-                <i class="menu-icon mdi mdi-table-large"></i>
+                <i class="menu-icon mdi mdi-cube-outline"></i>
                 <span class="menu-title">Lemari</span>
             </a>
         </li>
@@ -25,7 +37,7 @@
                     'dokumen-agunan-pengembalian/*',
                 ]) }}"
                 aria-controls="basic-ui">
-                <i class="menu-icon mdi mdi-table-large"></i>
+                <i class="menu-icon mdi mdi-file-document"></i>
                 <span class="menu-title">Dokumen Agunan</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -52,7 +64,7 @@
         <li class="nav-item {{ active_class(['laporan/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#user-pages"
                 aria-expanded="{{ is_active_route(['laporan/*']) }}" aria-controls="user-pages">
-                <i class="menu-icon mdi mdi-table-large"></i>
+                <i class="menu-icon mdi mdi-file-pdf"></i>
                 <span class="menu-title">Laporan</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -84,6 +96,16 @@
                     <li class="nav-item {{ active_class(['laporan/ketersediaan-ruang-penyimpanan']) }}">
                         <a class="nav-link text-wrap" href="{{ url('/laporan/ketersediaan-ruang-penyimpanan') }}">
                             Ketersediaan Ruang Penyimpanan Dokumen Agunan
+                        </a>
+                    </li>
+                    <li class="nav-item {{ active_class(['laporan/nasabah']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/nasabah') }}">
+                            Nasabah
+                        </a>
+                    </li>
+                    <li class="nav-item {{ active_class(['laporan/pegawai']) }}">
+                        <a class="nav-link text-wrap" href="{{ url('/laporan/pegawai') }}">
+                            Pegawai
                         </a>
                     </li>
                 </ul>

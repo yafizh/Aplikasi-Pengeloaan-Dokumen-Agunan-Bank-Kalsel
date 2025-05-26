@@ -31,6 +31,10 @@
         .form-control {
             padding: 0 1rem;
         }
+
+        * {
+            line-height: 1.2 !important;
+        }
     </style>
     @stack('style')
 </head>
@@ -55,10 +59,6 @@
     <script src="/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <!-- end base js -->
 
-    <!-- plugin js -->
-    @stack('plugin-scripts')
-    <!-- end plugin js -->
-
     <!-- common js -->
     <script src="/assets/js/off-canvas.js"></script>
     <script src="/assets/js/hoverable-collapse.js"></script>
@@ -67,7 +67,18 @@
     <script src="/assets/js/todolist.js"></script>
     <!-- end common js -->
 
-    @stack('custom-scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.js"></script>
+
+    <script>
+        new DataTable('#example', {
+            language: {
+                emptyTable: 'Data Tidak Ada'
+            }
+        });
+    </script>
 </body>
 
 </html>

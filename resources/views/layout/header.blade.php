@@ -5,5 +5,18 @@
         </a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-none d-xl-inline-block">
+                <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
+                    aria-expanded="false">
+                    <span class="profile-text d-none d-md-inline-flex">
+                        {{ auth()->user()->username }}
+                    </span>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                        <a class="dropdown-item">Ganti Password</a>
+                        <a href="/login" class="dropdown-item">Logout</a>
+                    </div>
+            </li>
+        </ul>
     </div>
 </nav>
