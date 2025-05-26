@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DokumenAgunan;
 use App\Models\DokumenAgunanPeminjaman;
 use App\Models\Lemari;
+use App\Models\Nasabah;
 use App\Models\Pegawai;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -127,6 +128,12 @@ class CetakController extends Controller
     {
         $lemari = Lemari::with('details')->get();
         return view('pages.cetak.ketersediaan-ruang-penyimpanan', compact('lemari'));
+    }
+
+    public function nasabah()
+    {
+        $nasabah = Nasabah::all();
+        return view('pages.cetak.nasabah', compact('nasabah'));
     }
 
     public function pegawai()
