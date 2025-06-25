@@ -31,7 +31,7 @@
                                     @foreach ($dokumenAgunan as $item)
                                         <tr>
                                             <td class="text-center">{{ $item->cif }}</td>
-                                            <td class="text-center">{{ $item->nasabah_nama }}</td>
+                                            <td class="text-center">{{ $item->nasabah->nama }}</td>
                                             <td class="text-center">{{ $item->pegawai->nama }}</td>
                                             <td class="d-flex" style="gap: .6rem;">
                                                 <a href="{{ route('dokumen-agunan.show', $item->id) }}"

@@ -3,32 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenAgunan;
+use App\Models\DokumenAgunanFile;
 use App\Models\Lemari;
 use App\Models\LemariDetail;
+use App\Models\Nasabah;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DokumenAgunanController extends Controller
 {
     public function index()
     {
-        $dokumenAgunan = DokumenAgunan::all();
+        $dokumenAgunan = DokumenAgunan::with(['nasabah', 'pegawai'])->get();
         return view('pages.dokumen-agunan.index', compact('dokumenAgunan'));
     }
 
     public function create()
     {
         $pegawai = Pegawai::all();
+        $nasabah = Nasabah::all();
         $lemari = Lemari::with(['details' => fn($query) => $query->where('status', 'Tersedia')])->get();
-        return view('pages.dokumen-agunan.create', compact('pegawai', 'lemari'));
+        return view('pages.dokumen-agunan.create', compact('pegawai', 'nasabah', 'lemari'));
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nasabah_nama' => 'required',
-            'nasabah_nomor_rekening' => 'required',
             'pegawai_id' => 'required',
+            'nasabah_id' => 'required',
             'lemari_detail_id' => 'required',
             'cif' => 'required',
             'jenis_kredit' => 'required',
@@ -37,12 +40,12 @@ class DokumenAgunanController extends Controller
             'berlaku_sampai' => 'required|date',
             'status' => 'required',
             'keterangan' => 'required',
+            'files' => 'required'
         ]);
 
-        DokumenAgunan::create([
-            'nasabah_nama' => $data['nasabah_nama'],
-            'nasabah_nomor_rekening' => $data['nasabah_nomor_rekening'],
+        $dokumenAgunan = DokumenAgunan::create([
             'pegawai_id' => $data['pegawai_id'],
+            'nasabah_id' => $data['nasabah_id'],
             'lemari_detail_id' => $data['lemari_detail_id'],
             'cif' => $data['cif'],
             'jenis_kredit' => $data['jenis_kredit'],
@@ -53,6 +56,14 @@ class DokumenAgunanController extends Controller
             'keterangan' => $data['keterangan'],
         ]);
         LemariDetail::where('id', $data['lemari_detail_id'])->update(['status' => 'Tidak Tersedia']);
+        $files = [];
+        foreach ($request->file('files') as $file) {
+            $files[] = [
+                'dokumen_agunan_id' => $dokumenAgunan->id,
+                'path'              => Storage::disk('public')->putFile('dokumen-agunan', $file)
+            ];
+        }
+        DokumenAgunanFile::insert($files);
 
         return redirect(route('dokumen-agunan.index'))->with('message', 'Berhasil menambah dokumen agunan');
     }
@@ -70,16 +81,16 @@ class DokumenAgunanController extends Controller
     public function edit(DokumenAgunan $dokumenAgunan)
     {
         $pegawai = Pegawai::all();
+        $nasabah = Nasabah::all();
         $lemari = Lemari::with(['details' => fn($query) => $query->where('status', 'Tersedia')->orWhere('id', $dokumenAgunan->lemariDetail->id)])->get();
-        return view('pages.dokumen-agunan.edit', compact('dokumenAgunan', 'pegawai', 'lemari'));
+        return view('pages.dokumen-agunan.edit', compact('dokumenAgunan', 'pegawai', 'nasabah', 'lemari'));
     }
 
     public function update(Request $request, DokumenAgunan $dokumenAgunan)
     {
         $data = $request->validate([
-            'nasabah_nama' => 'required',
-            'nasabah_nomor_rekening' => 'required',
             'pegawai_id' => 'required',
+            'nasabah_id' => 'required',
             'lemari_detail_id' => 'required',
             'cif' => 'required',
             'jenis_kredit' => 'required',
@@ -88,14 +99,27 @@ class DokumenAgunanController extends Controller
             'berlaku_sampai' => 'required|date',
             'status' => 'required',
             'keterangan' => 'required',
+            'files' => 'nullable'
         ]);
 
         if ($dokumenAgunan->lemariDetail->id != $data['lemari_detail_id']) {
             LemariDetail::where('id', $dokumenAgunan->lemariDetail->id)->update(['status' => 'Tersedia']);
         }
 
-        $dokumenAgunan->update($data);
+        $dokumenAgunan->update(collect($data)->except('files')->toArray());
         LemariDetail::where('id', $data['lemari_detail_id'])->update(['status' => 'Tidak Tersedia']);
+
+        if ($request->hasFile('files')) {
+            $files = [];
+            foreach ($request->file('files') as $file) {
+                $files[] = [
+                    'dokumen_agunan_id' => $dokumenAgunan->id,
+                    'path'              => Storage::disk('public')->putFile('dokumen-agunan', $file)
+                ];
+            }
+            DokumenAgunanFile::where('dokumen_agunan_id', $dokumenAgunan->id)->delete();
+            DokumenAgunanFile::insert($files);
+        }
 
         return redirect(route('dokumen-agunan.index'))->with('message', 'Berhasil edit dokumen agunan');
     }

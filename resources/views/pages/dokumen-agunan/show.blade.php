@@ -26,13 +26,13 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Nasabah</label>
-                        <input type="text" class="form-control" required value="{{ $dokumenAgunan->nasabah_nama }}"
+                        <input type="text" class="form-control" required value="{{ $dokumenAgunan->nasabah->nama }}"
                             disabled>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nomor Rekening Nasabah</label>
                         <input type="text" class="form-control" required
-                            value="{{ $dokumenAgunan->nasabah_nomor_rekening }}" disabled>
+                            value="{{ $dokumenAgunan->nasabah->nomor_rekening }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="pegawai" class="form-label">Pegawai Penerima Dokumen</label>
@@ -62,6 +62,19 @@
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
                         <textarea name="keterangan" id="keterangan" class="form-control" required disabled>{{ $dokumenAgunan->keterangan }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Dokumen</label>
+                        <br>
+                        <ul>
+                            @foreach ($dokumenAgunan->files as $file)
+                                <li>
+                                    <a href="{{ asset("storage/{$file->path}") }}" target="_blank">
+                                        Dokumen {{ $loop->iteration }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

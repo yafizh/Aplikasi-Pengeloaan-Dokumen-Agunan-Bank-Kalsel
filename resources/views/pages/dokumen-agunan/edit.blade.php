@@ -20,7 +20,8 @@
                         <h4>Edit Dokumen Agunan</h4>
                         <a href="{{ route('dokumen-agunan.index') }}" class="btn btn-secondary">Kembali</a>
                     </div>
-                    <form action="{{ route('dokumen-agunan.update', $dokumenAgunan->id) }}" method="POST">
+                    <form action="{{ route('dokumen-agunan.update', $dokumenAgunan->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -81,17 +82,13 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="nasabah_nama" class="form-label">Nama Nasabah Pemilik Agunan</label>
-                            <input type="text" class="form-control" id="nasabah_nama" name="nasabah_nama" required
-                                value="{{ $dokumenAgunan->nasabah_nama }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nasabah_nomor_rekening" class="form-label">
-                                Nomor Rekening Nasabah Pemilik Agunan</label>
-
-                            <input type="text" class="form-control" id="nasabah_nomor_rekening"
-                                name="nasabah_nomor_rekening" required
-                                value="{{ $dokumenAgunan->nasabah_nomor_rekening }}">
+                            <label for="nasabah_id" class="form-label">Nasabah</label>
+                            <select name="nasabah_id" id="nasabah_id" class="form-control" required>
+                                @foreach ($nasabah as $item)
+                                    <option {{ $item->id == $dokumenAgunan->nasabah->id ? 'selected' : '' }}
+                                        value="{{ $item->id }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="pegawai_id" class="form-label">Pegawai Penerima Dokumen</label>
@@ -140,6 +137,11 @@
                         <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan</label>
                             <textarea name="keterangan" id="keterangan" class="form-control" required>{{ $dokumenAgunan->keterangan }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="files" class="form-label">Upload Dokumen</label>
+                            <br>
+                            <input type="file" id="files" name="files[]" required multiple>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-success">Simpan</button>

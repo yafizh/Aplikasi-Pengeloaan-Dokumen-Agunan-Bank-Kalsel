@@ -13,8 +13,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pegawai_id');
             $table->foreignId('lemari_detail_id');
-            $table->string('nasabah_nama');
-            $table->string('nasabah_nomor_rekening');
+            $table->foreignId('nasabah_id');
             $table->string('cif');
             $table->date('tanggal_akad');
             $table->date('berlaku_sampai');

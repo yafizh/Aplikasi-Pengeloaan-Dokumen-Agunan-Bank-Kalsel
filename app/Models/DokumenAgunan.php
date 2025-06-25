@@ -20,6 +20,11 @@ class DokumenAgunan extends Model
         return $this->belongsTo(Pegawai::class, 'pegawai_id', 'id');
     }
 
+    public function nasabah(): BelongsTo
+    {
+        return $this->belongsTo(Nasabah::class, 'nasabah_id', 'id');
+    }
+
     public function lemariDetail(): BelongsTo
     {
         return $this->belongsTo(LemariDetail::class, 'lemari_detail_id', 'id');
@@ -28,5 +33,10 @@ class DokumenAgunan extends Model
     public function peminjaman(): HasMany
     {
         return $this->hasMany(DokumenAgunanPeminjaman::class, 'dokumen_agunan_id');
+    }
+
+    public function files(): HasMany
+    {
+        return $this->hasMany(DokumenAgunanFile::class, 'dokumen_agunan_id');
     }
 }
