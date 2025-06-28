@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CetakController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokumenAgunanController;
 use App\Http\Controllers\DokumenAgunanPeminjamanController;
 use App\Http\Controllers\LemariController;
@@ -15,9 +16,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    });
+    Route::get('/', [DashboardController::class, 'index']);
 
 
     Route::resource('/nasabah', NasabahController::class);

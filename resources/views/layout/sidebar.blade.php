@@ -1,5 +1,11 @@
 <nav class="sidebar sidebar-offcanvas dynamic-active-class-disabled" id="sidebar">
     <ul class="nav">
+        <li class="nav-item {{ active_class(['/']) }}">
+            <a class="nav-link" href="{{ url('/') }}">
+                <i class="menu-icon mdi mdi-television"></i>
+                <span class="menu-title">Dashboard</span>
+            </a>
+        </li>
         <li class="nav-item {{ active_class(['pegawai', 'pegawai/*']) }}">
             <a class="nav-link" href="{{ url('/pegawai') }}">
                 <i class="menu-icon mdi mdi-account-outline"></i>

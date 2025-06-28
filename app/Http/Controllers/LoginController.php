@@ -22,7 +22,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->to('/dokumen-agunan');
+            return redirect()->to('/');
         }
 
         return redirect()->to('/login')->with('error', 'Username atau password salah!');
