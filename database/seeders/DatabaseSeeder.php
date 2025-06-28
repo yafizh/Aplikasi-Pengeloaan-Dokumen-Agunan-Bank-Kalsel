@@ -18,63 +18,60 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $lemari = [
+            [
+                'nama' => 'Lemari 1',
+                'lokasi' => 'Lantai 1',
+                'keterangan' => '-'
+            ],
+            [
+                'nama' => 'Lemari 2',
+                'lokasi' => 'Lantai 2',
+                'keterangan' => '-'
+            ],
+            [
+                'nama' => 'Lemari 3',
+                'lokasi' => 'Lantai 3',
+                'keterangan' => '-'
+            ],
+        ];
+        foreach ($lemari as $item) {
+            Lemari::create($item);
+        }
+        $huruf = ['A', 'B', 'C', 'D', 'E'];
+        foreach ($lemari as $index => $item) {
+            LemariDetail::create([
+                'lemari_id' => $index + 1,
+                'nomor' => '1' . $huruf[$index],
+                'status' => 'Tersedia',
+            ]);
+            LemariDetail::create([
+                'lemari_id' => $index + 1,
+                'nomor' => '2' . $huruf[$index],
+                'status' => 'Tersedia',
+            ]);
+            LemariDetail::create([
+                'lemari_id' => $index + 1,
+                'nomor' => '3' . $huruf[$index],
+                'status' => 'Tersedia',
+            ]);
+            LemariDetail::create([
+                'lemari_id' => $index + 1,
+                'nomor' => '4' . $huruf[$index],
+                'status' => 'Tersedia',
+            ]);
+            LemariDetail::create([
+                'lemari_id' => $index + 1,
+                'nomor' => '5' . $huruf[$index],
+                'status' => 'Tersedia',
+            ]);
+        }
 
-
-
-        // $lemari = [
-        //     [
-        //         'nama' => 'Lemari 1',
-        //         'lokasi' => 'Lantai 1',
-        //         'keterangan' => '-'
-        //     ],
-        //     [
-        //         'nama' => 'Lemari 2',
-        //         'lokasi' => 'Lantai 2',
-        //         'keterangan' => '-'
-        //     ],
-        //     [
-        //         'nama' => 'Lemari 3',
-        //         'lokasi' => 'Lantai 3',
-        //         'keterangan' => '-'
-        //     ],
-        // ];
-        // foreach ($lemari as $item) {
-        //     Lemari::create($item);
-        // }
-        // $huruf = ['A', 'B', 'C', 'D', 'E'];
-        // foreach ($lemari as $index => $item) {
-        //     LemariDetail::create([
-        //         'lemari_id' => $index + 1,
-        //         'nomor' => '1' . $huruf[$index],
-        //         'status' => 'Tersedia',
-        //     ]);
-        //     LemariDetail::create([
-        //         'lemari_id' => $index + 1,
-        //         'nomor' => '2' . $huruf[$index],
-        //         'status' => 'Tersedia',
-        //     ]);
-        //     LemariDetail::create([
-        //         'lemari_id' => $index + 1,
-        //         'nomor' => '3' . $huruf[$index],
-        //         'status' => 'Tersedia',
-        //     ]);
-        //     LemariDetail::create([
-        //         'lemari_id' => $index + 1,
-        //         'nomor' => '4' . $huruf[$index],
-        //         'status' => 'Tersedia',
-        //     ]);
-        //     LemariDetail::create([
-        //         'lemari_id' => $index + 1,
-        //         'nomor' => '5' . $huruf[$index],
-        //         'status' => 'Tersedia',
-        //     ]);
-        // }
-
-        // Pengguna::create([
-        //     'username' => 'admin',
-        //     'password' => 'admin',
-        //     'status' => 'Admin'
-        // ]);
+        Pengguna::create([
+            'username' => 'admin',
+            'password' => 'admin',
+            'status' => 'Admin'
+        ]);
 
         $pegawai = [
             [
