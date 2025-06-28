@@ -17,11 +17,11 @@
         <h5 class="mb-0">Filter</h5>
         <table>
             <tr>
-                <td>Dari Berlaku Sampai</td>
+                <td>Dari Tanggal Jatuh Tempo</td>
                 <td>: {{ $filter['dari_berlaku_sampai'] }}</td>
             </tr>
             <tr>
-                <td>Sampai Berlaku Sampai</td>
+                <td>Sampai Tanggal Jatuh Tempo</td>
                 <td>: {{ $filter['sampai_berlaku_sampai'] }}</td>
             </tr>
         </table>
@@ -34,7 +34,7 @@
                 <th class="text-center">Cif</th>
                 <th class="text-center">Nama Nasabah</th>
                 <th class="text-center">Nomor Rekening</th>
-                <th class="text-center">Berlaku Sampai</th>
+                <th class="text-center">Jatuh Tempo</th>
             </tr>
         </thead>
         <tbody>

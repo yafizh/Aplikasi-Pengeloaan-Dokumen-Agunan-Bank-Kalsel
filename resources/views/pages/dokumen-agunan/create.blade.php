@@ -123,7 +123,7 @@
                                         required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="berlaku_sampai" class="form-label">Berlaku Sampai</label>
+                                    <label for="berlaku_sampai" class="form-label">Jatuh Tempo</label>
                                     <input type="date" class="form-control" id="berlaku_sampai" name="berlaku_sampai"
                                         required>
                                 </div>

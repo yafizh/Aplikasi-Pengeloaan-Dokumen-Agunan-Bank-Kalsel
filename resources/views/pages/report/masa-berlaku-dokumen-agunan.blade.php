@@ -8,13 +8,13 @@
                     <div class="card-body d-flex justify-content-between align-items-end" style="gap: 1rem;">
                         <div class="d-flex" style="gap: 1rem;">
                             <div>
-                                <label for="dari_berlaku_sampai" class="form-label">Dari Berlaku Sampai</label>
+                                <label for="dari_berlaku_sampai" class="form-label">Dari Tanggal Jatuh Tempo</label>
                                 <input type="date" class="form-control" id="dari_berlaku_sampai"
                                     name="dari_berlaku_sampai" required value="{{ request()->get('dari_berlaku_sampai') }}"
                                     required>
                             </div>
                             <div>
-                                <label for="sampai_berlaku_sampai" class="form-label">Sampai Berlaku Sampai</label>
+                                <label for="sampai_berlaku_sampai" class="form-label">Sampai Tanggal Jatuh Tempo</label>
                                 <input type="date" class="form-control" id="sampai_berlaku_sampai"
                                     name="sampai_berlaku_sampai" required
                                     value="{{ request()->get('sampai_berlaku_sampai') }}" required>
@@ -43,7 +43,7 @@
                                     <th class="text-center">Cif</th>
                                     <th class="text-center">Nama Nasabah</th>
                                     <th class="text-center">Nomor Rekening</th>
-                                    <th class="text-center">Berlaku Sampai</th>
+                                    <th class="text-center">Jatuh Tempo</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -130,7 +130,7 @@
                                 value="{{ $dokumenAgunan->tanggal_akad->format('Y-m-d') }}">
                         </div>
                         <div class="mb-3">
-                            <label for="berlaku_sampai" class="form-label">Berlaku Sampai</label>
+                            <label for="berlaku_sampai" class="form-label">Jatuh Tempo</label>
                             <input type="date" class="form-control" id="berlaku_sampai" name="berlaku_sampai"
                                 required value="{{ $dokumenAgunan->berlaku_sampai->format('Y-m-d') }}">
                         </div>

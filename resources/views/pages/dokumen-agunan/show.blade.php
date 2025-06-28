@@ -55,7 +55,7 @@
                             value="{{ $dokumenAgunan->tanggal_akad_formatted }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Berlaku Sampai</label>
+                        <label class="form-label">Jatuh Tempo</label>
                         <input type="text" class="form-control" required
                             value="{{ $dokumenAgunan->berlaku_sampai_formatted }}" disabled>
                     </div>
