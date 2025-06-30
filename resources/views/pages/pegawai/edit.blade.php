@@ -55,12 +55,12 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                value="{{ $pegawai->email }}">
+                                value="{{ $pegawai->email }}" required>
                         </div>
                         <div class="mb-3">
                             <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
                             <input type="nomor_telepon" class="form-control" id="nomor_telepon" name="nomor_telepon"
-                                value="{{ $pegawai->nomor_telepon }}">
+                                value="{{ $pegawai->nomor_telepon }}" required>
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
