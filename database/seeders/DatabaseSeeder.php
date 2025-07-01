@@ -11,13 +11,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         $lemari = [
             [
                 'nama' => 'Lemari 1',
@@ -80,6 +75,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '0864003134',
                 'tanggal_lahir' => '1996-10-10',
                 'alamat' => 'Psr. Agus Salim No. 620',
+                'email' => 'febri@gmail.com'
             ],
             [
                 "nama" => "LULU AFIFAH",
@@ -87,6 +83,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '08132380561',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'lulu@gmail.com'
             ],
             [
                 "nama" => "DARU PRATAMA",
@@ -94,6 +91,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '08797019014',
                 'tanggal_lahir' => '1986-09-26',
                 'alamat' => 'Dk. Babadak No. 557',
+                'email' => 'daru@gmail.com'
             ],
             [
                 "nama" => "ALNADIA",
@@ -101,6 +99,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '08379476457',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'alnadia@gmail.com'
             ],
             [
                 "nama" => "Bachtiar",
@@ -108,6 +107,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '08605803450',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'bactiar@gmail.com'
             ],
             [
                 "nama" => "DINA ANGGRAINI",
@@ -115,6 +115,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '0822572958',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'dina@gmail.com'
             ],
             [
                 "nama" => "NURUL FITRIAH",
@@ -122,6 +123,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '08205720809',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'nurul@gmail.com'
             ],
             [
                 "nama" => "MELLY",
@@ -129,6 +131,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '0894410658393',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'melly@gmail.com'
             ],
             [
                 "nama" => "RAHMI ROBIATY",
@@ -136,6 +139,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '08581746425',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'rahmi@gmail.com'
             ],
             [
                 "nama" => "GANI FAUZI",
@@ -143,6 +147,7 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '089556748780',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'gani@gmail.com'
             ],
             [
                 "nama" => "REZKI AULIA RAHMAH",
@@ -150,12 +155,19 @@ class DatabaseSeeder extends Seeder
                 'nomor_telepon' => '0851228536',
                 'tanggal_lahir' => '1995-01-01',
                 'alamat' => '',
+                'email' => 'rezki@gmail.com'
             ],
         ];
 
         foreach ($pegawai as $item) {
             Pegawai::create([
+                'pengguna_id' => Pengguna::create([
+                    'username' => $item['email'],
+                    'password' => '1',
+                    'status' => 'Pegawai'
+                ])->id,
                 'nama' => $item['nama'],
+                'email' => $item['email'],
                 'jenis_kelamin' => $item['jenis_kelamin'],
                 'nomor_telepon' => $item['nomor_telepon'],
                 'tanggal_lahir' => $item['tanggal_lahir'],
