@@ -13,7 +13,7 @@
                         {{ auth()->user()->username }}
                     </span>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <a class="dropdown-item">Ganti Password</a>
+                        <a href="/change-password" class="dropdown-item">Ganti Password</a>
                         <a href="/login" class="dropdown-item">Logout</a>
                     </div>
             </li>

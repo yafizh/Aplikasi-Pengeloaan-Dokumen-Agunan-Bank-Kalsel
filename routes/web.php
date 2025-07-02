@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -17,7 +18,6 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
-
 
     Route::resource('/nasabah', NasabahController::class);
     Route::resource('/pegawai', PegawaiController::class);
@@ -49,4 +49,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/nasabah', 'nasabah');
             Route::get('/pegawai', 'pegawai');
         });
+
+    Route::get('/change-password', [SettingController::class, 'editPassword']);
+    Route::put('/change-password', [SettingController::class, 'updatePassword']);
 });
