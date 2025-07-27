@@ -24,16 +24,16 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @if (count($nasabah))
+            @if (count($nasabah))
                 @foreach ($nasabah as $i => $item)
                     <tr>
                         <td class="align-middle text-center">{{ $i + 1 }}</td>
+                        <td class="align-middle text-center">{{ $item->nomor_rekening }}</td>
                         <td class="align-middle text-center">{{ $item->nama }}</td>
-                        <td class="align-middle text-center">{{ $item->dokumenAgunan->count() }}</td>
-                        <td class="align-middle text-center">{{ $item->dokumenAgunanPeminjaman->count() }}</td>
+                        <td class="align-middle text-center">{{ $item->email }}</td>
                     </tr>
                 @endforeach
-            @endif --}}
+            @endif
         </tbody>
     </table>
 </body>

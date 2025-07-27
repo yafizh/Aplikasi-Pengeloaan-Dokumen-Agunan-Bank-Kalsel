@@ -2,6 +2,26 @@
 
 @section('content')
     <div class="row">
+    <div class="col-12 mb-3">
+            <div class="card">
+                <form>
+                    <div class="card-body d-flex justify-content-between align-items-end" style="gap: 1rem;">
+                        <div class="d-flex" style="gap: 1rem;">
+                            <div>
+                                <label for="jumlah_peminjaman" class="form-label">Jumlah Peminjaman Lebih Dari</label>
+                                <input type="number" class="form-control" id="jumlah_peminjaman"
+                                    name="jumlah_peminjaman" required value="{{ request()->get('jumlah_peminjaman') ?? 0 }}"
+                                    required>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success">Filter</button>
+                            <a href="{{ url($urlCetak) }}" class="btn btn-primary" target="_blank">Cetak</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">

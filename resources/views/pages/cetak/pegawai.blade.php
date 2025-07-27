@@ -13,6 +13,15 @@
     @include('pages.cetak.header')
     <hr>
     <h3 class="text-center">Laporan Pegawai</h3>
+    @if (isset($filter['jumlah_peminjaman']))
+        <h5 class="mb-0">Filter</h5>
+        <table>
+            <tr>
+                <td>Jumlah Peminjaman Lebih Dari</td>
+                <td>: {{ $filter['jumlah_peminjaman'] }}</td>
+            </tr>
+        </table>
+    @endif
     <br>
     <table class="table table-bordered">
         <thead>
