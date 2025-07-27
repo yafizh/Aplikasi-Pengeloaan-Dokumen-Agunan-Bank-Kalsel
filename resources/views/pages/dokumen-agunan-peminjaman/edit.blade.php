@@ -30,7 +30,7 @@
                                 @foreach ($dokumenAgunan as $item)
                                     <option {{ $item->id == $dokumenAgunanPeminjaman->dokumen_agunan_id ? 'selected' : '' }}
                                         value="{{ $item->id }}">
-                                        {{ $item->nasabah_nama }}
+                                        {{ $item->nasabah->nama }}
                                     </option>
                                 @endforeach
                             </select>

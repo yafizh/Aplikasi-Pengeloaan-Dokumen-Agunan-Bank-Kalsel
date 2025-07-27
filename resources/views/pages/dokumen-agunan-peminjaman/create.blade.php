@@ -27,7 +27,7 @@
                             <select name="dokumen_agunan_id" id="dokumen_agunan_id" class="form-control" required>
                                 <option value="" selected disabled>Pilih Dokumen Agunanan</option>
                                 @foreach ($dokumenAgunan as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nasabah_nama }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->nasabah->nama }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -25,7 +25,7 @@ class DokumenAgunanPeminjamanController extends Controller
 
     public function create()
     {
-        $dokumenAgunan = DokumenAgunan::whereDoesntHave('peminjaman')->orWhereHas('peminjaman', fn($query) => $query->whereHas('pengembalian'))->get();
+        $dokumenAgunan = DokumenAgunan::with('nasabah')->whereDoesntHave('peminjaman')->orWhereHas('peminjaman', fn($query) => $query->whereHas('pengembalian'))->get();
         $pegawai = Pegawai::all();
         return view('pages.dokumen-agunan-peminjaman.create', compact('dokumenAgunan', 'pegawai'));
     }
