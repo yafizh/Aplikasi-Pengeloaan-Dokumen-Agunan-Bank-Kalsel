@@ -27,7 +27,6 @@
                 <div class="card-body">
                     <div class="card-title d-flex justify-content-between">
                         <h4>Laporan Pegawai</h4>
-                        <a href="{{ url('/cetak/pegawai') }}" class="btn btn-primary" target="_blank">Cetak</a>
                     </div>
                     <div class="table-responsive">
                         <table id="example" class="table">
