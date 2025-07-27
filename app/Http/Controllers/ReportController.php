@@ -16,7 +16,7 @@ class ReportController extends Controller
         $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
         $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
 
-        $dokumenAgunan = DokumenAgunan::select();
+        $dokumenAgunan = DokumenAgunan::with('nasabah');
         $urlCetak = '/cetak/daftar-agunan';
 
         if ($dariTanggalAkad && $sampaiTanggalAkad) {
@@ -38,7 +38,7 @@ class ReportController extends Controller
         $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
         $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
 
-        $dokumenAgunan = DokumenAgunan::select();
+        $dokumenAgunan = DokumenAgunan::with('nasabah');
         $urlCetak = '/cetak/status-verifikasi';
 
         if ($dariTanggalAkad && $sampaiTanggalAkad) {
@@ -60,7 +60,7 @@ class ReportController extends Controller
         $dariBerlakuSampai = $request->get('dari_berlaku_sampai') ?? null;
         $sampaiBerlakuSampai = $request->get('sampai_berlaku_sampai') ?? null;
 
-        $dokumenAgunan = DokumenAgunan::select();
+        $dokumenAgunan = DokumenAgunan::with('nasabah');
         $urlCetak = '/cetak/masa-berlaku';
 
         if ($dariBerlakuSampai && $sampaiBerlakuSampai) {
@@ -82,7 +82,7 @@ class ReportController extends Controller
         $dariTanggalPeminjaman = $request->get('dari_tanggal_peminjaman') ?? null;
         $sampaiTanggalPeminjaman = $request->get('sampai_tanggal_peminjaman') ?? null;
 
-        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan', 'pegawai', 'pengembalian');
+        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan.nasabah', 'pegawai', 'pengembalian');
         $urlCetak = '/cetak/peminjaman-pengembalian';
 
         if ($dariTanggalPeminjaman && $sampaiTanggalPeminjaman) {
@@ -120,17 +120,28 @@ class ReportController extends Controller
 
     public function nasabah()
     {
+        $urlCetak = '';
         $nasabah = Nasabah::all();
-        return view('pages.report.nasabah', compact('nasabah'));
+        return view('pages.report.nasabah', compact('nasabah', 'urlCetak'));
     }
 
-    public function pegawai()
+    public function pegawai(Request $request)
     {
+        $jumlahPeminjaman = $request->get('jumlah_peminjaman') ?? 0;
+
         $pegawai = Pegawai::with([
             'dokumenAgunan',
             'dokumenAgunanPeminjaman'
-        ])->get();
+        ]);
+        $urlCetak = '/cetak/pegawai';
 
-        return view('pages.report.pegawai', compact('pegawai'));
+        if ($jumlahPeminjaman > 0) {
+            $pegawai = $pegawai->whereHas('dokumenAgunanPeminjaman', fn() => null, '>=', $jumlahPeminjaman);
+            $urlCetak .= "?jumlah_peminjaman={$jumlahPeminjaman}";
+        }
+
+        $pegawai = $pegawai->get();
+
+        return view('pages.report.pegawai', compact('pegawai', 'urlCetak'));
     }
 }

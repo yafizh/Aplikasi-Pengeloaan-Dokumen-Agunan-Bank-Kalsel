@@ -61,7 +61,8 @@ class DokumenAgunanPeminjamanController extends Controller
 
     public function edit(DokumenAgunanPeminjaman $dokumenAgunanPeminjaman)
     {
-        $dokumenAgunan = DokumenAgunan::whereDoesntHave('peminjaman')
+        $dokumenAgunan = DokumenAgunan::with('nasabah')
+            ->whereDoesntHave('peminjaman')
             ->orWhere('id', $dokumenAgunanPeminjaman->dokumen_agunan_id)
             ->orWhereHas('peminjaman', fn($query) => $query->whereHas('pengembalian'))
             ->get();

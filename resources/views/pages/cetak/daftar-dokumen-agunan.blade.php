@@ -43,8 +43,8 @@
                 <tr>
                     <td class="align-middle text-center">{{ $i + 1 }}</td>
                     <td class="align-middle text-center">{{ $item->cif }}</td>
-                    <td class="align-middle text-center">{{ $item->nasabah_nama }}</td>
-                    <td class="align-middle text-center">{{ $item->nasabah_nomor_rekening }}</td>
+                    <td class="align-middle text-center">{{ $item->nasabah->nama }}</td>
+                    <td class="align-middle text-center">{{ $item->nasabah->nomor_rekening }}</td>
                     <td class="align-middle text-center">{{ $item->tanggal_akad_formatted }}</td>
                     <td class="align-middle text-center">{{ $item->jenis_agunan }}</td>
                 </tr>

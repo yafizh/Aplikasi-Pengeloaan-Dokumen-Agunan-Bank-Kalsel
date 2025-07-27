@@ -35,6 +35,7 @@
                 <th class="text-center">Pegawai yang Meminjam</th>
                 <th class="text-center">Tanggal Peminjaman</th>
                 <th class="text-center">Tanggal Pengembalian</th>
+                <th class="text-center">Keperluan</th>
             </tr>
         </thead>
         <tbody>
@@ -42,12 +43,13 @@
                 @foreach ($dokumenAgunanPeminjaman as $i => $item)
                     <tr>
                         <td class="align-middle text-center">{{ $i + 1 }}</td>
-                        <td class="align-middle text-center">{{ $item->dokumenAgunan->nasabah_nama }}</td>
+                        <td class="align-middle text-center">{{ $item->dokumenAgunan->nasabah->nama }}</td>
                         <td class="align-middle text-center">{{ $item->pegawai->nama }}</td>
                         <td class="align-middle text-center">{{ $item->tanggal_peminjaman_formatted }}</td>
                         <td class="align-middle text-center">
                             {{ $item->tanggal_pengembalian_formatted ?? 'Belum Dikembalikan' }}
                         </td>
+                        <td class="align-middle">{{ $item->keperluan }}</td>
                     </tr>
                 @endforeach
             @endif

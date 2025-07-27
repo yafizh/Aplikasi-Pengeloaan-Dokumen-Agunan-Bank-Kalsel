@@ -17,7 +17,7 @@ class CetakController extends Controller
         $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
         $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
 
-        $dokumenAgunan = DokumenAgunan::select();
+        $dokumenAgunan = DokumenAgunan::with('nasabah');
         $filter = [];
 
         if ($dariTanggalAkad && $sampaiTanggalAkad) {
@@ -42,7 +42,7 @@ class CetakController extends Controller
         $dariTanggalAkad = $request->get('dari_tanggal_akad') ?? null;
         $sampaiTanggalAkad = $request->get('sampai_tanggal_akad') ?? null;
 
-        $dokumenAgunan = DokumenAgunan::select();
+        $dokumenAgunan = DokumenAgunan::with('nasabah');
         $filter = [];
 
         if ($dariTanggalAkad && $sampaiTanggalAkad) {
@@ -67,7 +67,7 @@ class CetakController extends Controller
         $dariBerlakuSampai = $request->get('dari_berlaku_sampai') ?? null;
         $sampaiBerlakuSampai = $request->get('sampai_berlaku_sampai') ?? null;
 
-        $dokumenAgunan = DokumenAgunan::select();
+        $dokumenAgunan = DokumenAgunan::with('nasabah');
         $filter = [];
 
         if ($dariBerlakuSampai && $sampaiBerlakuSampai) {
@@ -92,7 +92,7 @@ class CetakController extends Controller
         $dariTanggalPeminjaman = $request->get('dari_tanggal_peminjaman') ?? null;
         $sampaiTanggalPeminjaman = $request->get('sampai_tanggal_peminjaman') ?? null;
 
-        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan', 'pegawai', 'pengembalian');
+        $dokumenAgunanPeminjaman = DokumenAgunanPeminjaman::with('dokumenAgunan.nasabah', 'pegawai', 'pengembalian');
         $filter = [];
 
         if ($dariTanggalPeminjaman && $sampaiTanggalPeminjaman) {
@@ -136,12 +136,21 @@ class CetakController extends Controller
         return view('pages.cetak.nasabah', compact('nasabah'));
     }
 
-    public function pegawai()
+    public function pegawai(Request $request)
     {
+        $filter = ['jumlah_peminjaman' => $request->get('jumlah_peminjaman') ?? 0];
+
         $pegawai = Pegawai::with([
             'dokumenAgunan',
             'dokumenAgunanPeminjaman'
-        ])->get();
+        ]);
+
+        if ($filter['jumlah_peminjaman'] > 0) {
+            $pegawai = $pegawai->whereHas('dokumenAgunanPeminjaman', fn() => null, '>=', $filter['jumlah_peminjaman']);
+        }
+
+        $pegawai = $pegawai->get();
+
         return view('pages.cetak.pegawai', compact('pegawai'));
     }
 }
