@@ -118,10 +118,26 @@ class ReportController extends Controller
         return view('pages.report.ketersediaan-ruang-penyimpanan', compact('lemari'));
     }
 
-    public function nasabah()
+    public function nasabah(Request $request)
     {
-        $urlCetak = '';
-        $nasabah = Nasabah::all();
+        $jenisKredit = $request->get('jenis_kredit') ?? null;
+        $jenisAgunan = $request->get('jenis_agunan') ?? null;
+        $urlCetak = '/cetak/nasabah?';
+
+        $nasabah = Nasabah::select();
+
+        if ($jenisKredit) {
+            $nasabah = $nasabah->whereHas('dokumenAgunan', fn($query) => $query->where('jenis_kredit', $jenisKredit));
+            $urlCetak .= "&jenis_kredit={$jenisKredit}";
+        }
+
+        if ($jenisAgunan) {
+            $nasabah = $nasabah->whereHas('dokumenAgunan', fn($query) => $query->where('jenis_agunan', $jenisAgunan));
+            $urlCetak .= "&jenis_agunan={$jenisAgunan}";
+        }
+
+        $nasabah = $nasabah->get();
+
         return view('pages.report.nasabah', compact('nasabah', 'urlCetak'));
     }
 

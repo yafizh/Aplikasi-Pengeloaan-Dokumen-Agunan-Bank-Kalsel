@@ -11,4 +11,9 @@ class Nasabah extends Model
     protected $casts = [
         'tanggal_lahir' => 'date'
     ];
+
+    public function dokumenAgunan()
+    {
+        return $this->hasMany(DokumenAgunan::class, 'nasabah_id');
+    }
 }

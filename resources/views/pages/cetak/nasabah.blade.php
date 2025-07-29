@@ -13,6 +13,23 @@
     @include('pages.cetak.header')
     <hr>
     <h3 class="text-center">Laporan Nasabah</h3>
+    @if (isset($filter['jenis_kredit']) || isset($filter['jenis_agunan']))
+        <h5 class="mb-0">Filter</h5>
+        <table>
+            @if (isset($filter['jenis_kredit']))
+                <tr>
+                    <td>Jenis Kredit</td>
+                    <td>: {{ $filter['jenis_kredit'] }}</td>
+                </tr>
+            @endif
+            @if (isset($filter['jenis_agunan']))
+                <tr>
+                    <td>Jenis Agunan</td>
+                    <td>: {{ $filter['jenis_agunan'] }}</td>
+                </tr>
+            @endif
+        </table>
+    @endif
     <br>
     <table class="table table-bordered">
         <thead>

@@ -130,10 +130,27 @@ class CetakController extends Controller
         return view('pages.cetak.ketersediaan-ruang-penyimpanan', compact('lemari'));
     }
 
-    public function nasabah()
+    public function nasabah(Request $request)
     {
-        $nasabah = Nasabah::all();
-        return view('pages.cetak.nasabah', compact('nasabah'));
+        $jenisKredit = $request->get('jenis_kredit') ?? null;
+        $jenisAgunan = $request->get('jenis_agunan') ?? null;
+
+        $nasabah = Nasabah::select();
+        $filter = [];
+
+        if ($jenisKredit) {
+            $nasabah = $nasabah->whereHas('dokumenAgunan', fn($query) => $query->where('jenis_kredit', $jenisKredit));
+            $filter['jenis_kredit'] = $jenisKredit;
+        }
+
+        if ($jenisAgunan) {
+            $nasabah = $nasabah->whereHas('dokumenAgunan', fn($query) => $query->where('jenis_agunan', $jenisAgunan));
+            $filter['jenis_agunan'] = $jenisAgunan;
+        }
+
+        $nasabah = $nasabah->get();
+
+        return view('pages.cetak.nasabah', compact('nasabah', 'filter'));
     }
 
     public function pegawai(Request $request)
